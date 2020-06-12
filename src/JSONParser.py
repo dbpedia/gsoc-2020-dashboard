@@ -21,5 +21,4 @@ def toClassesAndSubclasses(json_data):
             superClasses.append(superClass)
             subClasses.append(subClass)
 
-
     return (superClasses, subClasses)
