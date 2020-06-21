@@ -1,13 +1,25 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
-import src.LayoutFigures as LF
-
 
 def homePageLayout(dashApp):
     dashApp.layout = html.Div([
 
-        # plot ontology hierarchy sunburst
-        dcc.Graph(figure=LF.ontologyHierarchy())
+        dcc.Location(id='url', refresh=False),
 
-    ])
+        # tabs
+        dcc.Tabs(id='ontologies', value='ontology-1', children=[
+            dcc.Tab(label='Ontology Sunburst', value='ontology-1'),
+            dcc.Tab(label='Ontology Instance Count', value='ontology-2')
+        ], colors={
+            "border": "#212121",
+            "primary": "#212121",
+            "background": "#9E9E9E"
+        }),
+
+        # plot ontology hierarchy graphs
+        html.Div([
+            html.Div(id='ontology')
+        ], className='card w-100 bg-dark')
+
+    ], className='w-100')

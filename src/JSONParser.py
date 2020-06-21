@@ -1,4 +1,10 @@
-def toClassesAndSubclasses(json_data):
+import pandas as pd
+
+
+
+
+
+def toOntologyHierarchy(json_data):
     superClasses = list()
     subClasses = list()
     topLevel = list()
@@ -22,3 +28,20 @@ def toClassesAndSubclasses(json_data):
             subClasses.append(subClass)
 
     return (superClasses, subClasses)
+
+
+def toInstanceCount(json_data):
+    instanceName = list()
+    instanceCount = list()
+
+    for row in json_data['results']['bindings']:
+        if "dbpedia.org/ontology" in row['class']['value']:
+            # get class link
+            classValue = str(row['class']['value'])
+            classValue = classValue[classValue.rindex("/") + 1:]
+
+            instanceCountValue = str(row['instancecount']['value'])
+            instanceName.append(classValue)
+            instanceCount.append(instanceCountValue)
+
+    return (instanceName, instanceCount)
