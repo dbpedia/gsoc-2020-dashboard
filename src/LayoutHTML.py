@@ -19,7 +19,9 @@ def homePageLayout(dashApp):
 
         # plot ontology hierarchy graphs
         html.Div([
-            html.Div(id='ontology')
+            dcc.Loading(id='ontology_loader', type='cube', className='h-100 align-items-center', children=[
+                html.Div(id='ontology')
+            ])
         ], className='card w-100 bg-dark')
 
     ], className='w-100')
