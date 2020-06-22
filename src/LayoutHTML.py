@@ -25,7 +25,7 @@ def homePageLayout(dashApp):
         # ], className='card w-100 bg-dark'),
 
         # plot ontology hierarchy graphs
-        html.Div(id='onology_container', children=[
+        html.Div(id='ontology_container', children=[
             dcc.Loading(id='ontology_loader', type='cube', className='h-100 align-items-center', children=[
                 html.Div(id='ontology')
             ])
@@ -33,9 +33,18 @@ def homePageLayout(dashApp):
 
         # plot instance count graphs
         html.Div(id='instance_count_container', children=[
-            dcc.Loading(id='instance_count_loader', type='cube', className='h-100 align-items-center', children=[
-                html.Div(id='instance_count')
-            ])
-        ], className='card w-100 bg-dark', style={'display': 'none'})
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.Div([
+                            dcc.Loading(id='instance_count_loader', type='cube', className='h-100 align-items-center',
+                                        children=[
+                                            html.Div(id='instance_count')
+                                        ])
+                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+                    ], className='card bg-dark')
+                ], className='col-lg')
+            ], className='row')
+        ], className='w-100 bg-dark', style={'display': 'none'})
 
     ], className='w-100')

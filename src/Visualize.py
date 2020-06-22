@@ -1,5 +1,6 @@
-import plotly.graph_objs as go
 import numpy as np
+import plotly.graph_objs as go
+
 
 def ontologySunburst(plotData):
     parents = [""]
@@ -24,11 +25,13 @@ def ontologySunburst(plotData):
 
 
 def instanceCountPolar(plotData):
-
     data = plotData['Work']
     x = np.log10(list(data.values()))
     print(data.values(), x)
     barPolar = go.Figure(
         go.Barpolar(r=x, theta=list(data.keys())[1:], text=list(data.values()))
     )
+
+    barPolar.update_layout(polar_bgcolor='#292B2C', paper_bgcolor='#292B2C', polar=dict(radialaxis=dict(visible=False)),
+                           font_color='#FFFFFF')
     return barPolar
