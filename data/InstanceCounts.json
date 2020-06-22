@@ -1,0 +1,811 @@
+{
+  "head": {
+    "link": [],
+    "vars": [
+      "class",
+      "subclass",
+      "tier2count"
+    ]
+  },
+  "results": {
+    "distinct": false,
+    "ordered": true,
+    "bindings": [
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Event"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/SocietalEvent"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "57728"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Event"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/NaturalEvent"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "847"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Group"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "67996"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Broadcaster"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "33609"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Company"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "111289"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Legislature"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2480"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/GovernmentAgency"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7262"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/SportsTeam"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7111"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/MilitaryUnit"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "29996"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/EducationalInstitution"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "67378"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Organisation"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/SportsLeague"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2145"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Coach"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7223"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Chef"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "584"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Astronaut"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "653"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/BusinessPerson"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "829"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Lawyer"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/MilitaryPerson"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "33181"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Journalist"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1733"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Engineer"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "791"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Criminal"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3087"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Monarch"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2630"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Architect"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2887"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Scientist"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "938"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Ambassador"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "639"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Economist"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1189"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Judge"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3081"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Politician"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "15975"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Model"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1744"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/HorseTrainer"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "330"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Cleric"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "19109"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Writer"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "751"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/FictionalCharacter"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "22918"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Royalty"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "810"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Farmer"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Athlete"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "408837"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Artist"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "82838"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Person"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/BeautyQueen"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2597"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/CelestialBody"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "14423"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/ArchitecturalStructure"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "257425"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/PopulatedPlace"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "77380"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Monument"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "678"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/ConcentrationCamp"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "80"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/NaturalPlace"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "71151"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/HistoricPlace"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "26780"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Place"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Garden"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "612"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Artwork"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7526"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Software"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "52743"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/MusicalWork"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "155782"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Cartoon"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6318"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Database"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "989"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/WrittenWork"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "87974"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Document"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2907947"
+        }
+      },
+      {
+        "class": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Work"
+        },
+        "subclass": {
+          "type": "uri",
+          "value": "http://dbpedia.org/ontology/Film"
+        },
+        "tier2count": {
+          "type": "typed-literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "129980"
+        }
+      }
+    ]
+  }
+}
