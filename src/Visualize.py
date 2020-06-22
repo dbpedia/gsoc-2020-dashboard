@@ -24,14 +24,29 @@ def ontologySunburst(plotData):
     return ontologyFigure
 
 
-def instanceCountPolar(plotData):
-    data = plotData['Work']
-    x = np.log10(list(data.values()))
-    print(data.values(), x)
-    barPolar = go.Figure(
-        go.Barpolar(r=x, theta=list(data.keys())[1:], text=list(data.values()))
-    )
+def instanceCountPolar(plotData, classNames):
+    barPolars = []
+    colors = {
+        'Event': '#004D40',
+        'Person': '#BF360C',
+        'Organisation': '#01579B'
+    }
 
-    barPolar.update_layout(polar_bgcolor='#292B2C', paper_bgcolor='#292B2C', polar=dict(radialaxis=dict(visible=False)),
-                           font_color='#FFFFFF')
-    return barPolar
+    for className in classNames:
+        data = plotData[className]
+        x = np.log10(list(data.values()))
+
+        print(className)
+        print(data.values(), x)
+
+        barPolar = go.Figure(
+            go.Barpolar(r=x, theta=list(data.keys()), text=list(data.values()),
+                        marker=dict(color=colors[className]))
+        )
+
+        barPolar.update_layout(polar_bgcolor='#292B2C', paper_bgcolor='#292B2C', polar=dict(radialaxis=dict(visible=False)),
+                               font_color='#FFFFFF')
+
+        barPolars.append(barPolar)
+
+    return barPolars

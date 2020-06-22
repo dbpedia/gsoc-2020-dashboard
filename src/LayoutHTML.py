@@ -32,18 +32,45 @@ def homePageLayout(dashApp):
         ], className='card w-100 bg-dark'),
 
         # plot instance count graphs
-        html.Div(id='instance_count_container', children=[
+        html.Div(id='instances_count_container', children=[
             html.Div([
+
                 html.Div([
                     html.Div([
                         html.Div([
-                            dcc.Loading(id='instance_count_loader', type='cube', className='h-100 align-items-center',
+                            dcc.Loading(id='instances_event_loader', type='cube',
+                                        className='h-100 align-items-center',
                                         children=[
-                                            html.Div(id='instance_count')
+                                            html.Div(id='instances_event')
                                         ])
                         ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
                     ], className='card bg-dark')
-                ], className='col-lg')
+                ], className='col'),
+
+                html.Div([
+                    html.Div([
+                        html.Div([
+                            dcc.Loading(id='instances_person_loader', type='cube',
+                                        className='h-100 align-items-center',
+                                        children=[
+                                            html.Div(id='instances_person')
+                                        ])
+                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+                    ], className='card bg-dark')
+                ], className='col'),
+
+                html.Div([
+                    html.Div([
+                        html.Div([
+                            dcc.Loading(id='instances_organisation_loader', type='cube',
+                                        className='h-100 align-items-center',
+                                        children=[
+                                            html.Div(id='instances_organisation')
+                                        ])
+                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+                    ], className='card bg-dark')
+                ], className='col')
+
             ], className='row')
         ], className='w-100 bg-dark', style={'display': 'none'})
 
