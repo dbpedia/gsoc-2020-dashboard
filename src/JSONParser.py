@@ -1,9 +1,3 @@
-import pandas as pd
-
-
-
-
-
 def toOntologyHierarchy(json_data):
     superClasses = list()
     subClasses = list()
@@ -16,8 +10,8 @@ def toOntologyHierarchy(json_data):
         subClass = str(row['subclass']['value'])
 
         # fetch class name
-        superClass = superClass[superClass.rindex("/") + 1:].replace("#", "")
-        subClass = subClass[subClass.rindex("/") + 1:].replace("#", "")
+        superClass = superClass[superClass.rindex('/') + 1:].replace('#', '')
+        subClass = subClass[subClass.rindex('/') + 1:].replace('#', '')
 
         if 'owlThing' in superClass:
             topLevel.append(subClass)
@@ -31,17 +25,18 @@ def toOntologyHierarchy(json_data):
 
 
 def toInstanceCount(json_data):
-    instanceName = list()
-    instanceCount = list()
+    instanceCount = dict()
 
     for row in json_data['results']['bindings']:
-        if "dbpedia.org/ontology" in row['class']['value']:
-            # get class link
-            classValue = str(row['class']['value'])
-            classValue = classValue[classValue.rindex("/") + 1:]
+        superClass = row['class']['value']
+        subClass = row['subclass']['value']
 
-            instanceCountValue = str(row['instancecount']['value'])
-            instanceName.append(classValue)
-            instanceCount.append(instanceCountValue)
+        superClass = superClass[superClass.rindex("/") + 1:].replace('#', '')
+        subClass = subClass[subClass.rindex("/") + 1:].replace('#', '')
 
-    return (instanceName, instanceCount)
+        if superClass in instanceCount.keys():
+            instanceCount.get(superClass)[subClass] = int(row['tier2count']['value'])
+        else:
+            instanceCount[superClass] = {subClass: int(row['tier2count']['value'])}
+
+    return instanceCount

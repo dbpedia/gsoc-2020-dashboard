@@ -7,11 +7,11 @@ import src.LayoutFigures as LF
 def initializeCallbacks(dashApp):
     @dashApp.callback(
         Output('ontology', 'children'),
-        [Input('ontologies', 'value')])
+        [Input('class_details', 'value')])
     def ontologySunburst(tabname):
-        if tabname == 'ontology-1':
+        if tabname == 'ontology':
             print(tabname)
             return [dcc.Graph(figure=LF.ontologyHierarchy())]
-        elif tabname == 'ontology-2':
+        elif tabname == 'instance_count':
             print(tabname)
             return [dcc.Graph(figure=LF.instanceCount())]

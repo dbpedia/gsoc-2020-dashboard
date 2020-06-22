@@ -1,14 +1,14 @@
 from SPARQLWrapper import SPARQLWrapper, JSON
+import requests
 
 
 def sparqlWrapper(query):
-    print("requesting..")
-    # query = "select ?class count(?s) as ?scount {?s a ?class} group by ?class order by desc(?scount) limit 5"
     sparql = SPARQLWrapper("https://dbpedia.org/sparql")
 
     sparql.setQuery(query=query)
     sparql.setReturnFormat(JSON)
     sparql.addDefaultGraph("http://dbpedia.org")
 
+    print("fetching results...")
     results = sparql.query().convert()
     return results
