@@ -71,7 +71,36 @@ def homePageLayout(dashApp):
                     ], className='card bg-dark')
                 ], className='col')
 
+            ], className='row'),
+
+            html.Div([
+
+                html.Div([
+                    html.Div([
+                        html.Div([
+                            dcc.Loading(id='instances_work_loader', type='cube',
+                                        className='h-100 align-items-center',
+                                        children=[
+                                            html.Div(id='instances_work')
+                                        ])
+                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+                    ], className='card bg-dark')
+                ], className='col'),
+
+                html.Div([
+                    html.Div([
+                        html.Div([
+                            dcc.Loading(id='instances_place_loader', type='cube',
+                                        className='h-100 align-items-center',
+                                        children=[
+                                            html.Div(id='instances_place')
+                                        ])
+                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+                    ], className='card bg-dark')
+                ], className='col')
+
             ], className='row')
+
         ], className='w-100 bg-dark', style={'display': 'none'})
 
     ], className='w-100')

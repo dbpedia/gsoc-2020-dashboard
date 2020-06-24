@@ -29,10 +29,13 @@ def instanceCountPolar(plotData, classNames):
     colors = {
         'Event': '#004D40',
         'Person': '#BF360C',
-        'Organisation': '#01579B'
+        'Organisation': '#01579B',
+        'Work': '#FFAB00',
+        'Place': '#FFFFFF'
     }
 
     for className in classNames:
+
         data = plotData[className]
         x = np.log10(list(data.values()))
 
@@ -45,7 +48,7 @@ def instanceCountPolar(plotData, classNames):
         )
 
         barPolar.update_layout(polar_bgcolor='#292B2C', paper_bgcolor='#292B2C', polar=dict(radialaxis=dict(visible=False)),
-                               font_color='#FFFFFF')
+                               font_color='#FFFFFF', title=className)
 
         barPolars.append(barPolar)
 
