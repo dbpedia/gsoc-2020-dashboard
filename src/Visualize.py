@@ -34,22 +34,30 @@ def instanceCountPolar(plotData, classNames):
         'Place': '#FFFFFF'
     }
 
+    thetas = []
+    mixedValues = []
+    mixedColors = []
+
     for className in classNames:
-
         data = plotData[className]
+        print(data.values())
         x = np.log10(list(data.values()))
+        thetas.extend(list(data.keys()))
+        mixedValues.extend(x)
+        mixedColors.extend([colors[className]] * len(x))
 
-        print(className)
-        print(data.values(), x)
+    print(thetas)
+    print(mixedValues)
+    print(mixedColors)
 
-        barPolar = go.Figure(
-            go.Barpolar(r=x, theta=list(data.keys()), text=list(data.values()),
-                        marker=dict(color=colors[className]))
-        )
+    barPolar = go.Figure(
+        go.Barpolar(r=mixedValues, theta=thetas, text=mixedValues,
+                    marker=dict(color=mixedColors))
+    )
 
-        barPolar.update_layout(polar_bgcolor='#292B2C', paper_bgcolor='#292B2C', polar=dict(radialaxis=dict(visible=False)),
-                               font_color='#FFFFFF', title=className)
+    barPolar.update_layout(polar_bgcolor='#292B2C', paper_bgcolor='#292B2C',
+                           font_color='#FFFFFF', title='Instances Count', height=1000)
 
-        barPolars.append(barPolar)
+    barPolars.append(barPolar)
 
-    return barPolars
+    return barPolar

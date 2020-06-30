@@ -34,7 +34,7 @@ def homePageLayout(dashApp):
         # plot instance count graphs
         html.Div(id='instances_count_container', children=[
             html.Div([
-
+                # event
                 html.Div([
                     html.Div([
                         html.Div([
@@ -46,60 +46,61 @@ def homePageLayout(dashApp):
                         ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
                     ], className='card bg-dark')
                 ], className='col'),
-
-                html.Div([
-                    html.Div([
-                        html.Div([
-                            dcc.Loading(id='instances_person_loader', type='cube',
-                                        className='h-100 align-items-center',
-                                        children=[
-                                            html.Div(id='instances_person')
-                                        ])
-                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
-                    ], className='card bg-dark')
-                ], className='col'),
-
-                html.Div([
-                    html.Div([
-                        html.Div([
-                            dcc.Loading(id='instances_organisation_loader', type='cube',
-                                        className='h-100 align-items-center',
-                                        children=[
-                                            html.Div(id='instances_organisation')
-                                        ])
-                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
-                    ], className='card bg-dark')
-                ], className='col')
+                # person
+                # html.Div([
+                #     html.Div([
+                #         html.Div([
+                #             dcc.Loading(id='instances_person_loader', type='cube',
+                #                         className='h-100 align-items-center',
+                #                         children=[
+                #                             html.Div(id='instances_person')
+                #                         ])
+                #         ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+                #     ], className='card bg-dark')
+                # ], className='col'),
+                # organisation
+                # html.Div([
+                #     html.Div([
+                #         html.Div([
+                #             dcc.Loading(id='instances_organisation_loader', type='cube',
+                #                         className='h-100 align-items-center',
+                #                         children=[
+                #                             html.Div(id='instances_organisation')
+                #                         ])
+                #         ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+                #     ], className='card bg-dark')
+                # ], className='col')
 
             ], className='row'),
 
-            html.Div([
-
-                html.Div([
-                    html.Div([
-                        html.Div([
-                            dcc.Loading(id='instances_work_loader', type='cube',
-                                        className='h-100 align-items-center',
-                                        children=[
-                                            html.Div(id='instances_work')
-                                        ])
-                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
-                    ], className='card bg-dark')
-                ], className='col'),
-
-                html.Div([
-                    html.Div([
-                        html.Div([
-                            dcc.Loading(id='instances_place_loader', type='cube',
-                                        className='h-100 align-items-center',
-                                        children=[
-                                            html.Div(id='instances_place')
-                                        ])
-                        ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
-                    ], className='card bg-dark')
-                ], className='col')
-
-            ], className='row')
+            # html.Div([
+            #     #work
+            #     html.Div([
+            #         html.Div([
+            #             html.Div([
+            #                 dcc.Loading(id='instances_work_loader', type='cube',
+            #                             className='h-100 align-items-center',
+            #                             children=[
+            #                                 html.Div(id='instances_work')
+            #                             ])
+            #             ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+            #         ], className='card bg-dark')
+            #     ], className='col'),
+            #
+            #     #place
+            #     html.Div([
+            #         html.Div([
+            #             html.Div([
+            #                 dcc.Loading(id='instances_place_loader', type='cube',
+            #                             className='h-100 align-items-center',
+            #                             children=[
+            #                                 html.Div(id='instances_place')
+            #                             ])
+            #             ], className='card-body', style={'padding': 0, 'border-radius': '12px'})
+            #         ], className='card bg-dark')
+            #     ], className='col')
+            #
+            # ], className='row')
 
         ], className='w-100 bg-dark', style={'display': 'none'})
 
