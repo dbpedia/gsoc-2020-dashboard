@@ -14,9 +14,9 @@ def ontologyHierarchy():
     return VI.ontologySunburst(ontologyData)
 
 
-def instanceCount(classNames):
+def instanceCount():
     results = RD.sparqlWrapper(
         "SELECT distinct ?class ?subclass count (distinct ?instance) as ?tier2count  WHERE {{ ?subclass rdfs:subClassOf ?class FILTER (?class in (dbo:Person, dbo:Organisation, dbo:Place, dbo:Work, dbo:Event)) } UNION { SELECT ?subclass ?class { VALUES (?subclass ?class){ (dbo:Person dbo:Person) (dbo:Organization dbo:Organization) (dbo:Place dbo:Place) (dbo:Work dbo:Work) (dbo:Event dbo:Event)}}} ?instance rdf:type/rdfs:subClassOf* ?subclass . } Group by ?class ?subclass ORDER by ?class",
         CSV)
     instancesData = CSVP.toInstanceCount(results)
-    return VI.instanceCountPolar(instancesData, classNames)
+    return VI.instanceCountPolar(instancesData)

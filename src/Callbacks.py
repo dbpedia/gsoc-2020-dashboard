@@ -9,20 +9,13 @@ def initializeCallbacks(dashApp):
         [Output('ontology_container', 'style'),
          Output('instances_count_container', 'style'),
          Output('ontology', 'children'),
-         Output('instances_event', 'children')],
+         Output('parent_instances', 'children')],
         [Input('class_details', 'value')])
     def ontologySunburst(tabname):
         if tabname == 'ontology':
             print(tabname)
-            return {'display': 'block'}, {'display': 'none'}, [dcc.Graph(figure=LF.ontologyHierarchy())], \
-                   []
+            return {'display': 'block'}, {'display': 'none'}, [dcc.Graph(figure=LF.ontologyHierarchy())], []
 
         elif tabname == 'instance_count':
             print(tabname)
-            figures = LF.instanceCount(['Event', 'Person', 'Organisation', 'Work', 'Place'])
-            return {'display': 'none'}, {'display': 'block'}, [], \
-                   [dcc.Graph(figure=figures)], \
-                   # [dcc.Graph(figure=figures[1])], \
-                   # [dcc.Graph(figure=figures[2])], \
-                   # [dcc.Graph(figure=figures[3])], \
-                   # [dcc.Graph(figure=figures[4])]
+            return {'display': 'none'}, {'display': 'block'}, [], [dcc.Graph(id='parent_instances', figure=LF.instanceCount())]

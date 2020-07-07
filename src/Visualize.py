@@ -1,4 +1,3 @@
-import numpy as np
 import plotly.graph_objs as go
 
 
@@ -24,40 +23,26 @@ def ontologySunburst(plotData):
     return ontologyFigure
 
 
-def instanceCountPolar(plotData, classNames):
-    barPolars = []
-    colors = {
-        'Event': '#004D40',
-        'Person': '#BF360C',
-        'Organisation': '#01579B',
-        'Work': '#FFAB00',
-        'Place': '#FFFFFF'
-    }
+def instanceCountPolar(plotData):
+    barColors = ['#004D40', '#BF360C', '#01579B', '#FFAB00', '#FFFFFF']
 
-    thetas = []
-    mixedValues = []
-    mixedColors = []
+    instancesFigure = go.Figure(go.Bar(
+        x=plotData['tier2count'],
+        y=plotData['class'],
+        orientation='h',
+        marker=dict(color=barColors)
+    ))
 
-    for className in classNames:
-        data = plotData[className]
-        print(data.values())
-        x = np.log10(list(data.values()))
-        thetas.extend(list(data.keys()))
-        mixedValues.extend(x)
-        mixedColors.extend([colors[className]] * len(x))
-
-    print(thetas)
-    print(mixedValues)
-    print(mixedColors)
-
-    barPolar = go.Figure(
-        go.Barpolar(r=mixedValues, theta=thetas, text=mixedValues,
-                    marker=dict(color=mixedColors))
+    instancesFigure.update_layout(
+        margin=dict(t=0, b=0, r=0, l=0, pad=0),
+        plot_bgcolor='#292B2C',
+        paper_bgcolor='#292B2C',
+        font_size=15,
+        font_color='#FFFFFF',
+        yaxis=dict(showgrid=False)
     )
 
-    barPolar.update_layout(polar_bgcolor='#292B2C', paper_bgcolor='#292B2C',
-                           font_color='#FFFFFF', title='Instances Count', height=1000)
+    # bar = instancesFigure.data[0]
+    # bar.on_click()
 
-    barPolars.append(barPolar)
-
-    return barPolar
+    return instancesFigure
