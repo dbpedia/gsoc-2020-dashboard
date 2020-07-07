@@ -42,6 +42,29 @@ def homePageLayout(dashApp):
                             ])
             ]),
 
+            html.Div([
+
+                html.Label('Work Class Statistics', className='text-center w-100 text-white'),
+
+                dcc.Tabs(id='subclass_details', value='pie', children=[
+                    dcc.Tab(label='Pie Chart', value='pie'),
+                    dcc.Tab(label='Polar Chart', value='polar'),
+                    dcc.Tab(label='Line Chart', value='line')
+                ], colors={
+                    "border": "#212121",
+                    "primary": "#212121",
+                    "background": "#9E9E9E"
+                })
+            ], className='m-3'),
+
+            html.Div([
+                dcc.Loading(id='subclasses_plot_loader', type='cube',
+                            className='h-100 align-items-center',
+                            children=[
+                                html.Div(id='subclasses_instances')
+                            ])
+            ])
+
         ], className='w-100 bg-dark', style={'display': 'none'})
 
     ], className='w-100')
