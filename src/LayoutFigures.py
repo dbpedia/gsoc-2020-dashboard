@@ -1,9 +1,11 @@
 from SPARQLWrapper import JSON, CSV
 
-import src.JSONParser as JP
 import src.CSVParser as CSVP
+import src.JSONParser as JP
 import src.RequestData as RD
 import src.Visualize as VI
+
+global instancesData
 
 
 def ontologyHierarchy():
@@ -15,8 +17,13 @@ def ontologyHierarchy():
 
 
 def instanceCount():
+    global instancesData
     results = RD.sparqlWrapper(
         "SELECT distinct ?class ?subclass count (distinct ?instance) as ?tier2count  WHERE {{ ?subclass rdfs:subClassOf ?class FILTER (?class in (dbo:Person, dbo:Organisation, dbo:Place, dbo:Work, dbo:Event)) } UNION { SELECT ?subclass ?class { VALUES (?subclass ?class){ (dbo:Person dbo:Person) (dbo:Organization dbo:Organization) (dbo:Place dbo:Place) (dbo:Work dbo:Work) (dbo:Event dbo:Event)}}} ?instance rdf:type/rdfs:subClassOf* ?subclass . } Group by ?class ?subclass ORDER by ?class",
         CSV)
     instancesData = CSVP.toInstanceCount(results)
-    return VI.instanceCountPolar(instancesData)
+    return VI.instanceCountBar(instancesData)
+
+
+def subclassesPieChart():
+    return VI.subclassesPieChart(instancesData)

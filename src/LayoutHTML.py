@@ -35,7 +35,7 @@ def homePageLayout(dashApp):
         html.Div(id='instances_count_container', children=[
 
             html.Div([
-                dcc.Loading(id='instances_event_loader', type='cube',
+                dcc.Loading(id='parent_instances_loader', type='cube',
                             className='h-100 align-items-center',
                             children=[
                                 html.Div(id='parent_instances')
@@ -44,9 +44,9 @@ def homePageLayout(dashApp):
 
             html.Div([
 
-                html.Label('Work Class Statistics', className='text-center w-100 text-white'),
+                html.Label('Work Class Statistics', id='parentclass_label', className='text-center w-100 text-white'),
 
-                dcc.Tabs(id='subclass_details', value='pie', children=[
+                dcc.Tabs(id='subclass_details', children=[
                     dcc.Tab(label='Pie Chart', value='pie'),
                     dcc.Tab(label='Polar Chart', value='polar'),
                     dcc.Tab(label='Line Chart', value='line')

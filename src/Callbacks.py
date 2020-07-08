@@ -11,11 +11,20 @@ def initializeCallbacks(dashApp):
          Output('ontology', 'children'),
          Output('parent_instances', 'children')],
         [Input('class_details', 'value')])
-    def ontologySunburst(tabname):
-        if tabname == 'ontology':
-            print(tabname)
+    def ontologySunburst(tabValue):
+        if tabValue == 'ontology':
+            print(tabValue)
             return {'display': 'block'}, {'display': 'none'}, [dcc.Graph(figure=LF.ontologyHierarchy())], []
 
-        elif tabname == 'instance_count':
-            print(tabname)
-            return {'display': 'none'}, {'display': 'block'}, [], [dcc.Graph(id='parent_instances', figure=LF.instanceCount())]
+        elif tabValue == 'instance_count':
+            print(tabValue)
+            return {'display': 'none'}, {'display': 'block'}, [], \
+                   [dcc.Graph(id='parent_instances_bar', figure=LF.instanceCount())]
+
+    @dashApp.callback(
+        [Output('subclasses_instances', 'children'),
+         Output('parentclass_label', 'children')],
+        [Input('parent_instances_bar', 'clickData')]
+    )
+    def subclassesPlots(data):
+        print(data)

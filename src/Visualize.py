@@ -23,7 +23,7 @@ def ontologySunburst(plotData):
     return ontologyFigure
 
 
-def instanceCountPolar(plotData):
+def instanceCountBar(plotData):
     barColors = ['#004D40', '#BF360C', '#01579B', '#FFAB00', '#FFFFFF']
 
     instancesFigure = go.Figure(go.Bar(
@@ -46,3 +46,17 @@ def instanceCountPolar(plotData):
     # bar.on_click()
 
     return instancesFigure
+
+
+def subclassesPieChart(plotData):
+    print("reached....")
+    print(plotData)
+    plotData = plotData[plotData['class'] == 'Work']
+    subclassesPie = go.Figure(go.Pie(
+        labels=plotData['subclass'],
+        values=plotData['tier2count'],
+        textinfo='label+percent',
+        insidetextorientation='radial'
+    ))
+
+    return subclassesPie
