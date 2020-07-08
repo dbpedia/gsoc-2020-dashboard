@@ -23,17 +23,18 @@ def ontologySunburst(plotData):
     return ontologyFigure
 
 
-def instanceCountBar(plotData):
+def parentClassesBar(plotDataParent):
     barColors = ['#004D40', '#BF360C', '#01579B', '#FFAB00', '#FFFFFF']
 
     instancesFigure = go.Figure(go.Bar(
-        x=plotData['tier2count'],
-        y=plotData['class'],
+        x=plotDataParent['tier2count'],
+        y=plotDataParent['class'],
         orientation='h',
         marker=dict(color=barColors)
     ))
 
     instancesFigure.update_layout(
+        height=300,
         margin=dict(t=0, b=0, r=0, l=0, pad=0),
         plot_bgcolor='#292B2C',
         paper_bgcolor='#292B2C',
@@ -42,21 +43,40 @@ def instanceCountBar(plotData):
         yaxis=dict(showgrid=False)
     )
 
-    # bar = instancesFigure.data[0]
-    # bar.on_click()
-
     return instancesFigure
 
 
-def subclassesPieChart(plotData):
-    print("reached....")
-    print(plotData)
-    plotData = plotData[plotData['class'] == 'Work']
+def workClassesPie(plotDataSubClasses):
+    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == 'Work']
     subclassesPie = go.Figure(go.Pie(
-        labels=plotData['subclass'],
-        values=plotData['tier2count'],
+        labels=workSubClasses['subclass'],
+        values=workSubClasses['tier2count'],
         textinfo='label+percent',
         insidetextorientation='radial'
     ))
 
     return subclassesPie
+
+
+def workClassesPolar(plotDataSubClasses):
+    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == 'Work']
+    subclassesPie = go.Figure(go.Pie(
+        labels=workSubClasses['subclass'],
+        values=workSubClasses['tier2count'],
+        textinfo='label+percent',
+        insidetextorientation='radial'
+    ))
+
+    return subclassesPie
+
+
+def instanceCountBar(plotDataParent, plotDataSubClasses):
+    instanceCountsFigures = dict()
+
+    instanceCountsFigures['parent'] = parentClassesBar(plotDataParent)
+    instanceCountsFigures['Work+Pie'] = workClassesPie(plotDataSubClasses)
+    instanceCountsFigures['Work+Polar'] = workClassesPolar(plotDataSubClasses)
+    # instanceCountsFigures['Work']['Line'] = workClassesLine(plotDataSubClasses)
+
+    return instanceCountsFigures
+

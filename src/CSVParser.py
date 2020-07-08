@@ -14,4 +14,4 @@ def toInstanceCount(csv_data):
     parentClasses = instancesCount.groupby(by='class', as_index=False).sum()
     print(parentClasses)
 
-    return parentClasses
+    return parentClasses, instancesCount
