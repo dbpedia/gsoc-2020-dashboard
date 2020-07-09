@@ -25,11 +25,12 @@ def initializeCallbacks(dashApp):
                    [dcc.Graph(id='parent_instances_bar', figure=instancesCountFigures['parent'])]
 
     @dashApp.callback(
-        Output('subclasses_instances', 'children'),
+        [Output('subclasses_instances', 'children'),
+         Output('parentclass_label', 'children')],
         [Input('parent_instances_bar', 'clickData')]
     )
     def subclassesPlots(data):
         if data is not None:
             label = data['points'][0]['label']
             print(label)
-            return [dcc.Graph(figure=instancesCountFigures['Work+Pie'])]
+            return [dcc.Graph(figure=instancesCountFigures[label + '+Pie'])], [label + ' Class Instances']

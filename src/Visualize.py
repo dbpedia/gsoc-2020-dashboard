@@ -46,26 +46,21 @@ def parentClassesBar(plotDataParent):
     return instancesFigure
 
 
-def workClassesPie(plotDataSubClasses):
-    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == 'Work']
+def workClassesPie(plotDataSubClasses, className):
+    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == className]
     subclassesPie = go.Figure(go.Pie(
         labels=workSubClasses['subclass'],
         values=workSubClasses['tier2count'],
         textinfo='label+percent',
-        insidetextorientation='radial'
     ))
 
-    return subclassesPie
-
-
-def workClassesPolar(plotDataSubClasses):
-    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == 'Work']
-    subclassesPie = go.Figure(go.Pie(
-        labels=workSubClasses['subclass'],
-        values=workSubClasses['tier2count'],
-        textinfo='label+percent',
-        insidetextorientation='radial'
-    ))
+    subclassesPie.update_layout(
+        margin=dict(t=0, b=0, r=0, l=0, pad=0),
+        plot_bgcolor='#292B2C',
+        paper_bgcolor='#292B2C',
+        font_size=15,
+        font_color='#FFFFFF',
+    )
 
     return subclassesPie
 
@@ -74,9 +69,12 @@ def instanceCountBar(plotDataParent, plotDataSubClasses):
     instanceCountsFigures = dict()
 
     instanceCountsFigures['parent'] = parentClassesBar(plotDataParent)
-    instanceCountsFigures['Work+Pie'] = workClassesPie(plotDataSubClasses)
-    instanceCountsFigures['Work+Polar'] = workClassesPolar(plotDataSubClasses)
+    instanceCountsFigures['Work+Pie'] = workClassesPie(plotDataSubClasses, 'Work')
+    instanceCountsFigures['Place+Pie'] = workClassesPie(plotDataSubClasses, 'Place')
+    instanceCountsFigures['Person+Pie'] = workClassesPie(plotDataSubClasses, 'Person')
+    instanceCountsFigures['Organisation+Pie'] = workClassesPie(plotDataSubClasses, 'Organisation')
+    instanceCountsFigures['Event+Pie'] = workClassesPie(plotDataSubClasses, 'Event')
+
     # instanceCountsFigures['Work']['Line'] = workClassesLine(plotDataSubClasses)
 
     return instanceCountsFigures
-

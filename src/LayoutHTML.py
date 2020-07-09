@@ -44,17 +44,17 @@ def homePageLayout(dashApp):
 
             html.Div([
 
-                html.Label('Work Class Statistics', id='parentclass_label', className='text-center w-100 text-white'),
+                html.Label('', id='parentclass_label', className='text-center w-100 text-white'),
 
-                dcc.Tabs(id='subclass_details', children=[
-                    dcc.Tab(label='Pie Chart', value='pie'),
-                    dcc.Tab(label='Polar Chart', value='polar'),
-                    dcc.Tab(label='Line Chart', value='line')
-                ], colors={
-                    "border": "#212121",
-                    "primary": "#212121",
-                    "background": "#9E9E9E"
-                })
+                # dcc.Tabs(id='subclass_details', children=[
+                #     dcc.Tab(label='Pie Chart', value='pie'),
+                #     dcc.Tab(label='Polar Chart', value='polar'),
+                #     dcc.Tab(label='Line Chart', value='line')
+                # ], colors={
+                #     "border": "#212121",
+                #     "primary": "#212121",
+                #     "background": "#9E9E9E"
+                # })
             ], className='m-3'),
 
             html.Div([
