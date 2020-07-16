@@ -58,12 +58,22 @@ def homePageLayout(dashApp):
             ], className='m-3'),
 
             html.Div([
-                dcc.Loading(id='subclasses_plot_loader', type='cube',
-                            className='h-100 align-items-center',
-                            children=[
-                                html.Div(id='subclasses_instances')
-                            ])
-            ])
+                html.Div([
+                    dcc.Loading(id='subclasses_plot_loader', type='cube',
+                                className='h-100 align-items-center',
+                                children=[
+                                    html.Div(id='subclasses_instances')
+                                ])
+                ], className='col'),
+                html.Div([
+                    dcc.Loading(id='subclasses_plot_loader_2', type='cube',
+                                className='h-100 align-items-center',
+                                children=[
+                                    html.Div(id='subclasses_instances_bar')
+                                ])
+                ], className='col')
+
+            ], className='row')
 
         ], className='w-100 bg-dark', style={'display': 'none'})
 

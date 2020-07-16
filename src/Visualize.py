@@ -65,6 +65,25 @@ def workClassesPie(plotDataSubClasses, className):
     return subclassesPie
 
 
+def workClassesBar(plotDataSubClasses, className):
+    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == className]
+    subclassesBar = go.Figure(go.Bar(
+        y=workSubClasses['subclass'],
+        x=workSubClasses['tier2count'],
+        orientation='h'
+    ))
+
+    subclassesBar.update_layout(
+        margin=dict(t=0, b=0, r=0, l=0, pad=0),
+        plot_bgcolor='#292B2C',
+        paper_bgcolor='#292B2C',
+        font_size=15,
+        font_color='#FFFFFF',
+    )
+
+    return subclassesBar
+
+
 def instanceCountBar(plotDataParent, plotDataSubClasses):
     instanceCountsFigures = dict()
 
@@ -74,6 +93,12 @@ def instanceCountBar(plotDataParent, plotDataSubClasses):
     instanceCountsFigures['Person+Pie'] = workClassesPie(plotDataSubClasses, 'Person')
     instanceCountsFigures['Organisation+Pie'] = workClassesPie(plotDataSubClasses, 'Organisation')
     instanceCountsFigures['Event+Pie'] = workClassesPie(plotDataSubClasses, 'Event')
+
+    instanceCountsFigures['Work+Bar'] = workClassesBar(plotDataSubClasses, 'Work')
+    instanceCountsFigures['Place+Bar'] = workClassesBar(plotDataSubClasses, 'Place')
+    instanceCountsFigures['Person+Bar'] = workClassesBar(plotDataSubClasses, 'Person')
+    instanceCountsFigures['Organisation+Bar'] = workClassesBar(plotDataSubClasses, 'Organisation')
+    instanceCountsFigures['Event+Bar'] = workClassesBar(plotDataSubClasses, 'Event')
 
     # instanceCountsFigures['Work']['Line'] = workClassesLine(plotDataSubClasses)
 
