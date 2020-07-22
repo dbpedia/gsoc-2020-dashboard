@@ -3,7 +3,6 @@ import dash_html_components as html
 
 
 def initializeInstancesCount(instancesCountFigures):
-    print(instancesCountFigures['parent'])
     instancesCount = html.Div(id='instances_count_container', children=[
 
         html.Div([
@@ -11,7 +10,7 @@ def initializeInstancesCount(instancesCountFigures):
                         className='h-100 align-items-center',
                         children=[
                             html.Div(id='parent_instances', children=[
-                                [dcc.Graph(id='parent_instances_bar', figure=instancesCountFigures['parent'])]
+                                dcc.Graph(id='parent_instances_bar', figure=instancesCountFigures)
                             ])
                         ])
         ]),

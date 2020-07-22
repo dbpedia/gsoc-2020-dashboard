@@ -1,5 +1,5 @@
 import plotly.graph_objs as go
-
+import plotly.offline as plt
 
 def ontologySunburst(plotData):
     parents = [""]
@@ -43,6 +43,7 @@ def parentClassesBar(plotDataParent):
         yaxis=dict(showgrid=False)
     )
 
+    # plt.plot(instancesFigure, filename='test.html'
     return instancesFigure
 
 
@@ -94,11 +95,11 @@ def instanceCountBar(plotDataParent, plotDataSubClasses):
     instanceCountsFigures['Organisation+Pie'] = workClassesPie(plotDataSubClasses, 'Organisation')
     instanceCountsFigures['Event+Pie'] = workClassesPie(plotDataSubClasses, 'Event')
 
-    instanceCountsFigures['Work+Bar'] = workClassesBar(plotDataSubClasses, 'Work')
-    instanceCountsFigures['Place+Bar'] = workClassesBar(plotDataSubClasses, 'Place')
-    instanceCountsFigures['Person+Bar'] = workClassesBar(plotDataSubClasses, 'Person')
-    instanceCountsFigures['Organisation+Bar'] = workClassesBar(plotDataSubClasses, 'Organisation')
-    instanceCountsFigures['Event+Bar'] = workClassesBar(plotDataSubClasses, 'Event')
+    # instanceCountsFigures['Work+Bar'] = workClassesBar(plotDataSubClasses, 'Work')
+    # instanceCountsFigures['Place+Bar'] = workClassesBar(plotDataSubClasses, 'Place')
+    # instanceCountsFigures['Person+Bar'] = workClassesBar(plotDataSubClasses, 'Person')
+    # instanceCountsFigures['Organisation+Bar'] = workClassesBar(plotDataSubClasses, 'Organisation')
+    # instanceCountsFigures['Event+Bar'] = workClassesBar(plotDataSubClasses, 'Event')
 
     # instanceCountsFigures['Work']['Line'] = workClassesLine(plotDataSubClasses)
 
