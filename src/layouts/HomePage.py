@@ -1,8 +1,12 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_table
+import pandas as pd
 
 
 def initializeHomePage():
+    df = pd.read_csv('./data/Ontologies.csv')
+
     homePage = html.Div([
 
         html.Div([
@@ -16,7 +20,8 @@ def initializeHomePage():
                 html.Div([
                     html.Div([
                         dcc.Textarea(id='sparql-query-input', placeholder='SPARQL Query Editor',
-                                     style={'width': '100%', 'align-content': 'center'})
+                                     style={'width': '100%', 'align-content': 'center', 'padding': 10,
+                                            'border-radius': '5px', 'border': '1px solid #C0C0C0'})
                     ], className='col', style={'margin': 20}),
                 ], className='row w100'),
 
@@ -56,9 +61,21 @@ def initializeHomePage():
                                     style={'width': '100%', 'height': '100%', 'background-color': '#e8aa24',
                                            'color': '#FFFFFF'})
                     ], className='col'),
+                ], className='row w-100 m-0 p-0'),
+
+                html.Div([
+                    html.Div([
+                        dash_table.DataTable(
+                            data=df.to_dict('records'),
+                            columns=[{'id': c, 'name': c} for c in df.columns],
+                            style_cell={'textAlign': 'left', 'minWidth': '180px', 'padding': 10},
+                        )
+                    ], className='col', style={'margin': 20})
                 ], className='row w-100 m-0 p-0')
             ], className='card-body')
-        ], className='card', style={'background-color': '#08415f', 'margin': 20}),
+        ], className='card', style={'background-color': '#394247', 'margin': 20, 'border-radius': '10px',
+                                    'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+                                                  '0 6px 20px 0 rgba(0, 0, 0, 0.48)'}),
 
     ])
 
