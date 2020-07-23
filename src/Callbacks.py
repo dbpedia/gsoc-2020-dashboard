@@ -4,23 +4,27 @@ from dash.dependencies import Output, Input, State
 import src.LayoutFigures as LF
 from src.layouts.InstancesCount import initializeInstancesCount
 from src.layouts.Ontologies import initializeOntologies
+from src.layouts.HomePage import initializeHomePage
 
 
 def initializeCallbacks(dashApp):
     ontologyHierarchyFigure = LF.ontologyHierarchy()
-    instancesCountFigures = LF.instanceCount()
+    # instancesCountFigures = LF.instanceCount()
 
     @dashApp.callback(
         Output('container', 'children'),
         [Input('route', 'pathname')]
     )
     def button_action(pathname):
-        if pathname == '/ontologies':
+        if pathname == '/':
+            print(pathname)
+            return initializeHomePage()
+        elif pathname == '/ontologies':
             print(pathname)
             return initializeOntologies(ontologyHierarchyFigure)
         elif pathname == '/instancescount':
             print(pathname)
-            return initializeInstancesCount(instancesCountFigures['parent'])
+            return initializeInstancesCount(instancesCountFigures)
 
     @dashApp.callback(
         Output('route', 'pathname'),
@@ -54,16 +58,14 @@ def initializeCallbacks(dashApp):
                                                                       last_clicked)
         return cur_clicks
 
-    # @dashApp.callback(
-    #     [Output('subclasses_instances', 'children'),
-    #      Output('parentclass_label', 'children'),
-    #      Output('subclasses_instances_bar', 'children')],
-    #     [Input('parent_instances_bar', 'clickData')]
-    # )
-    # def subclassesPlots(data):
-    #     if data is not None:
-    #         label = data['points'][0]['label']
-    #         print(label)
-    #         return [dcc.Graph(figure=instancesCountFigures[label + '+Pie'])], \
-    #                [label + ' Class Instances'], \
-    #                [dcc.Graph(figure=instancesCountFigures[label + '+Bar'])]
+    @dashApp.callback(
+        [Output('subclasses_instances', 'children'),
+         Output('parentclass_label', 'children')],
+        [Input('parent_instances_bar', 'clickData')]
+    )
+    def subclassesPlots(data):
+        if data is not None:
+            label = data['points'][0]['label']
+            print(label)
+            return [dcc.Graph(figure=instancesCountFigures[label + '+Pie'])], \
+                   [label + ' Class Instances']

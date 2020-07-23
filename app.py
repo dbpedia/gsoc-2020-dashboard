@@ -1,7 +1,7 @@
 import os
 import dash
 import src.Callbacks as CB
-import src.LayoutHTML as LHTML
+import src.ParentLayout as LHTML
 
 global dashApp
 

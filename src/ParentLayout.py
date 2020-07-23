@@ -9,7 +9,7 @@ def homePageLayout(dashApp):
 
         # navigation bar
         html.Nav(children=[
-            html.A(children=[
+            html.A(href='/', children=[
                 html.Img(src='https://wiki.dbpedia.org/sites/default/files/DBpediaLogoFull.png', height=40,
                          className='d-inline-block')
             ], className='navbar-brand')
@@ -29,6 +29,7 @@ def homePageLayout(dashApp):
         ], className='row w-100 m-0 p-0'),
         html.Div(id='display-clicked', children=''),
 
+        html.Div(id='container'),
         # tidy tree
         # html.Div([
         #     dcc.Loading(id='tidy_tree_loader', type='cube', className='h-100 align-items-center', children=[
@@ -37,6 +38,5 @@ def homePageLayout(dashApp):
         # ], className='card w-100 bg-dark'),
 
         # container for ontologies and instances count
-        html.Div(id='container'),
 
     ], className='w-100')
