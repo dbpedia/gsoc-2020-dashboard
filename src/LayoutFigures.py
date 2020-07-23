@@ -20,3 +20,29 @@ def instanceCount():
         CSV)
     parentClasses, instancesCount = CSVP.toInstanceCount(results)
     return VI.instanceCountBar(parentClasses, instancesCount)
+
+
+def totalTriples():
+    results = RD.sparqlWrapper(
+        "SELECT (COUNT(*) AS ?x) WHERE { ?s ?p ?o }",
+        CSV)
+    totalTriples = CSVP.parseCounts(results)
+    return str(totalTriples.iloc[0]['x'])
+
+
+def totalClasses():
+    results = RD.sparqlWrapper(
+        "SELECT (COUNT(DISTINCT ?o) AS ?x) WHERE { ?s a ?o }",
+        CSV
+    )
+    totalClasses = CSVP.parseCounts(results)
+    return str(totalClasses.iloc[0]['x'])
+
+
+def totalProperties():
+    results = RD.sparqlWrapper(
+        "SELECT (COUNT(DISTINCT ?p) AS ?x) WHERE { ?s ?p ?o }",
+        CSV
+    )
+    totalProperties = CSVP.parseCounts(results)
+    return str(totalProperties.iloc[0]['x'])

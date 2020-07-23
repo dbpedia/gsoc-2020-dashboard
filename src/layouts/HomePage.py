@@ -3,18 +3,64 @@ import dash_html_components as html
 import dash_table
 import pandas as pd
 
+import src.LayoutFigures as LF
 
-def initializeHomePage():
+
+def initializeHomePage(totalTriples, totalClasses, totalProperties):
     df = pd.read_csv('./data/Ontologies.csv')
 
     homePage = html.Div([
 
+        # SPORTAL Statistics
         html.Div([
-            # html.Div([], className='col'),
-            # html.Div([], className='col'),
-            # html.Div([], className='col')
-        ], className='row'),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.Label('Total Triples', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        dcc.Loading(type='dot', children=[
+                            html.Label(id='total-triples-label',
+                                       children=[totalTriples],
+                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                              'line-height': '120%'})
+                        ])
+                    ], className='card-body', style={'padding': 15})
+                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+            ], className='col'),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.Label('Total Classes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        dcc.Loading(type='dot', children=[
+                            html.Label(id='total-classes-label',
+                                       children=[totalClasses],
+                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                              'line-height': '120%'})
+                        ])
+                    ], className='card-body', style={'padding': 15})
+                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+            ], className='col'),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.Label('Total Properties', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        dcc.Loading(type='dot', children=[
+                            html.Label(id='total-properties-label',
+                                       children=[totalProperties],
+                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                              'line-height': '120%'})
+                        ])
+                    ], className='card-body', style={'padding': 15})
+                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+            ], className='col')
+        ], className='row', style={'margin': 10}),
 
+        # SPARQL Editor
         html.Div([
             html.Div([
                 html.Div([

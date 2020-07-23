@@ -15,3 +15,8 @@ def toInstanceCount(csv_data):
     print(parentClasses)
 
     return parentClasses, instancesCount
+
+
+def parseCounts(csv_data):
+    totalTriples = pd.read_csv(StringIO(csv_data.decode("utf-8")), sep=',')
+    return totalTriples

@@ -10,10 +10,11 @@ def homePageLayout(dashApp):
         # navigation bar
         html.Nav(children=[
             html.A(href='/', children=[
-                html.Img(src='https://wiki.dbpedia.org/sites/default/files/DBpediaLogoFull.png', height=40,
+                html.Img(src='https://wiki.dbpedia.org/sites/default/files/DBpediaLogoFull.png', height=45,
                          className='d-inline-block')
             ], className='navbar-brand')
-        ], className='navbar navbar-dark bg-dark'),
+        ], className='navbar navbar-dark bg-dark', style={'padding-left': 20, 'padding-right': 20, 'padding-top': 3,
+                                                          'padding-bottom': 3}),
 
         # tabs
         html.Div([
@@ -33,6 +34,7 @@ def homePageLayout(dashApp):
         html.Div(id='display-clicked', children=''),
 
         html.Div(id='container'),
+
         # tidy tree
         # html.Div([
         #     dcc.Loading(id='tidy_tree_loader', type='cube', className='h-100 align-items-center', children=[

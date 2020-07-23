@@ -2,14 +2,17 @@ import dash_core_components as dcc
 from dash.dependencies import Output, Input, State
 
 import src.LayoutFigures as LF
+from src.layouts.HomePage import initializeHomePage
 from src.layouts.InstancesCount import initializeInstancesCount
 from src.layouts.Ontologies import initializeOntologies
-from src.layouts.HomePage import initializeHomePage
 
 
 def initializeCallbacks(dashApp):
     ontologyHierarchyFigure = LF.ontologyHierarchy()
     # instancesCountFigures = LF.instanceCount()
+    totalTriples = LF.totalTriples()
+    totalClasses = LF.totalClasses()
+    totalProperties = LF.totalProperties()
 
     @dashApp.callback(
         Output('container', 'children'),
@@ -18,7 +21,7 @@ def initializeCallbacks(dashApp):
     def button_action(pathname):
         if pathname == '/':
             print(pathname)
-            return initializeHomePage()
+            return initializeHomePage(totalTriples, totalClasses, totalProperties)
         elif pathname == '/ontologies':
             print(pathname)
             return initializeOntologies(ontologyHierarchyFigure)
