@@ -3,11 +3,10 @@ import dash_html_components as html
 import dash_table
 import pandas as pd
 
-import src.LayoutFigures as LF
-
 
 def initializeHomePage(totalTriples, totalClasses, totalProperties):
-    df = pd.read_csv('./data/Ontologies.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/data/Ontologies.csv')
+    print(df)
 
     homePage = html.Div([
 

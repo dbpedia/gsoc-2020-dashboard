@@ -9,7 +9,7 @@ from src.layouts.Ontologies import initializeOntologies
 
 def initializeCallbacks(dashApp):
     ontologyHierarchyFigure = LF.ontologyHierarchy()
-    # instancesCountFigures = LF.instanceCount()
+    instancesCountFigures = LF.instanceCount()
     totalTriples = LF.totalTriples()
     totalClasses = LF.totalClasses()
     totalProperties = LF.totalProperties()
