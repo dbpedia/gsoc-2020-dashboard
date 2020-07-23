@@ -20,3 +20,8 @@ def toInstanceCount(csv_data):
 def parseCounts(csv_data):
     totalTriples = pd.read_csv(StringIO(csv_data.decode("utf-8")), sep=',')
     return totalTriples
+
+
+def parseQueryResponse(csv_data):
+    table = pd.read_csv(StringIO(csv_data.decode("utf-8")), sep=',')
+    return table

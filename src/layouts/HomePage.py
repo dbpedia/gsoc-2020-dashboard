@@ -64,9 +64,9 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties):
             html.Div([
                 html.Div([
                     html.Div([
-                        dcc.Textarea(id='sparql-query-input', placeholder='SPARQL Query Editor',
-                                     style={'width': '100%', 'align-content': 'center', 'padding': 10,
-                                            'border-radius': '5px', 'border': '1px solid #C0C0C0'})
+                        dcc.Input(id='sparql-query-input', placeholder='SPARQL Query Editor', debounce=False,
+                                  style={'width': '100%', 'align-content': 'center', 'padding': 10,
+                                         'border-radius': '5px', 'border': '1px solid #C0C0C0'})
                     ], className='col', style={'margin': 20}),
                 ], className='row w100'),
 
@@ -111,6 +111,7 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties):
                 html.Div([
                     html.Div([
                         dash_table.DataTable(
+                            id='response-datatable',
                             data=df.to_dict('records'),
                             columns=[{'id': c, 'name': c} for c in df.columns],
                             style_cell={'textAlign': 'left', 'minWidth': '180px', 'padding': 10},

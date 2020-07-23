@@ -46,3 +46,11 @@ def totalProperties():
     )
     totalProperties = CSVP.parseCounts(results)
     return str(totalProperties.iloc[0]['x'])
+
+
+def userQuery(query):
+    results = RD.sparqlWrapper(
+        query, CSV
+    )
+    table = CSVP.parseQueryResponse(results)
+    return table

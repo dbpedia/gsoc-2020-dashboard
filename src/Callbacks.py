@@ -72,3 +72,16 @@ def initializeCallbacks(dashApp):
             print(label)
             return [dcc.Graph(figure=instancesCountFigures[label + '+Pie'])], \
                    [label + ' Class Instances']
+
+    @dashApp.callback(
+        [Output('response-datatable', 'data'),
+         Output('response-datatable', 'columns')],
+        [Input('sparql-query-input', 'value'),
+         Input('run-query-button', 'n_clicks')]
+    )
+    def updated_clicked(query, run):
+        if run is not None:
+            if query is not None or query != '':
+                print(query)
+                table = LF.userQuery(query)
+                return table.to_dict('records'), [{'id': column, 'name': column} for column in table.columns]
