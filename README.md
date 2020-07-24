@@ -21,9 +21,9 @@ Moreover, to increase the user interactivity, horizontal bar chart is also plott
 
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
-1) Flask framework (for backend operations and handling requests)
-2) Docker (for deployment)
-3) Plotly and D3.js (for visualizations)
-4) Jetbrains' IDE PyCharm (for efficient development and continous integration)
+1) [Flask](https://flask.palletsprojects.com/en/1.1.x/) framework (for backend operations and handling requests)
+2) [Docker](https://www.docker.com/) (for deployment)
+3) [Plotly](https://plotly.com/) and [D3.js](https://d3js.org/) (for visualizations)
+4) [Jetbrains IDE PyCharm](https://www.jetbrains.com/pycharm/) (for efficient development and continous integration)
 
 This dashboard is currently deployed on DBpedia's server using docker. On the same server, [dockerized-dbpedia](https://github.com/dbpedia/Dockerized-DBpedia) that contains the latest-core is also running, which eventually acts as SPARQL endpoint for executing the query. When new commits are made to this repository, docker image is built on the docker hub. This updated docker image is then pulled on DBpedia's server to update the live dashboard.
