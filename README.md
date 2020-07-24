@@ -17,9 +17,13 @@ In order to get everything on single platform where users can query, visualize, 
 
 Moreover, to increase the user interactivity, horizontal bar chart is also plotted that has the functionality of plotting sub-charts when bars are clicked. At present, this dashboard contains above mentioned visualizations. The home page has another functionality to where users can run the SPARQL queries on different cores and specify the format, and execution timeout along with download feature. Once, the query is executed successfully, the response will be displayed in tabular form with appropriate user interface and pagination.
 
+![home page general statistics](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/homepage.png)
+
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
 1) Flask framework
 2) Docker
 3) Plotly and D3.js
 4) Jetbrains' IDE PyCharm
+
+This dashboard is currently deployed on DBpedia's server using docker. On the same server, [dockerized-dbpedia](https://github.com/dbpedia/Dockerized-DBpedia) that contains the latest-core is also running, which eventually acts as SPARQL endpoint for executing the query. When new commits are made to this repository, docker image is built on the docker hub. This updated docker image is then pulled on DBpedia's server to update the live dashboard.
