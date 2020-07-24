@@ -19,6 +19,10 @@ Moreover, to increase the user interactivity, horizontal bar chart is also plott
 
 ![home page general statistics](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/homepage.png)
 
+In the below image, horizontal bar chart is displayed. The bars that are visualized are those classes that holds the highest number of instances in the latest core. Clicking on the 5 bars will generate the sub-chart based on the selected bar (class). The sub-chart represents the instances count of the selected parent class.
+
+![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/instancescount.png)
+
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
 1) [Flask](https://flask.palletsprojects.com/en/1.1.x/) framework (for backend operations and handling requests)
