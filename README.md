@@ -31,3 +31,10 @@ Tools and Frameworks used for developing this system:
 4) [Jetbrains IDE PyCharm](https://www.jetbrains.com/pycharm/) (for efficient development and continous integration)
 
 This dashboard is currently deployed on DBpedia's server using docker. On the same server, [dockerized-dbpedia](https://github.com/dbpedia/Dockerized-DBpedia) that contains the latest-core is also running, which eventually acts as SPARQL endpoint for executing the query. When new commits are made to this repository, docker image is built on the docker hub. This updated docker image is then pulled on DBpedia's server to update the live dashboard.
+
+## Running on your local system:
+
+In order to run this project in local system, the best recommended IDE to use is PyCharm and follow the below steps.
+1) Clone the repository using PyCharm's feature of "Import from version control".
+2) After cloning, setup the virtual environment and run "pip install -r requirements.txt". This step will install all the dependencies in the virtual environment.
+3) Lastly, run the "app.py" python file and open the browser. By default, application will run on localhost.
