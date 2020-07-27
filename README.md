@@ -15,7 +15,7 @@ In order to get everything on single platform where users can query, visualize, 
 
 ![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/sunburst.png)
 
-Moreover, to increase the user interactivity, horizontal bar chart is also plotted that has the functionality of plotting sub-charts when bars are clicked. At present, this dashboard contains above mentioned visualizations. The home page has another functionality where users can run the SPARQL queries on different cores and specify the format, and execution timeout along with download feature. Once, the query is executed successfully, the response will be displayed in tabular form with appropriate user interface and pagination.
+Moreover, to increase the user interactivity, horizontal bar chart is also plotted that has the functionality of plotting sub-charts when bars are clicked. At present, this dashboard contains above mentioned visualizations. The home page has another functionality where users can run the SPARQL queries on different cores and specify the format, and execution timeout along with download feature. Once, the query is executed successfully, the response will be displayed in tabular form with appropriate user interface and pagination. Currently, only CSV format is working. However, the functionality to "download" and specify "core-version" is not yet implemented, but will be implemented soon.
 
 ![home page general statistics](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/homepage.png)
 
