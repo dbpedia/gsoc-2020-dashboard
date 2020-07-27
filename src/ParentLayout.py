@@ -12,12 +12,14 @@ def homePageLayout(dashApp):
             html.A(href='/', children=[
                 html.Img(src='https://wiki.dbpedia.org/sites/default/files/DBpediaLogoFull.png', height=45,
                          className='d-inline-block')
-            ], className='navbar-brand')
+            ], className='navbar-brand'),
+            html.A(id='about', children=[html.Span('About')], href='/about',
+                        className='navbar-text btn btn-outline-secondary about_content')
         ], className='navbar navbar-dark bg-dark', style={'padding-left': 20, 'padding-right': 20, 'padding-top': 3,
                                                           'padding-bottom': 3}),
 
         # tabs
-        html.Div([
+        html.Div(id='tabs', children=[
             html.Div([
                 html.Div(id='clicked-button', children='ontologies:0 instancescount:0 last:nan',
                          style={'display': 'none'}),

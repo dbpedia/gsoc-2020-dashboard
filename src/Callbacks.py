@@ -2,6 +2,7 @@ import dash_core_components as dcc
 from dash.dependencies import Output, Input, State
 
 import src.LayoutFigures as LF
+from src.layouts.About import initializeAbout
 from src.layouts.HomePage import initializeHomePage
 from src.layouts.InstancesCount import initializeInstancesCount
 from src.layouts.Ontologies import initializeOntologies
@@ -22,6 +23,9 @@ def initializeCallbacks(dashApp):
         if pathname == '/':
             print(pathname)
             return initializeHomePage(totalTriples, totalClasses, totalProperties)
+        elif pathname == '/about':
+            print(pathname)
+            return initializeAbout()
         elif pathname == '/ontologies':
             print(pathname)
             return initializeOntologies(ontologyHierarchyFigure)
