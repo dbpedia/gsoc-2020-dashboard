@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 
-def homePageLayout(dashApp):
+def rootLayout(dashApp):
     dashApp.layout = html.Div([
 
         dcc.Location(id='route', refresh=False),

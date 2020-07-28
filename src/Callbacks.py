@@ -1,5 +1,5 @@
 import dash_core_components as dcc
-from dash.dependencies import Output, Input, State
+from dash.dependencies import Output, Input
 
 import src.LayoutFigures as LF
 from src.layouts.About import initializeAbout
@@ -19,11 +19,9 @@ def initializeCallbacks(dashApp):
     )
     def navigation(pathname):
         if pathname == '/':
-            print(pathname)
             return initializeHomePage(totalTriples, totalClasses, totalProperties,
                                       ontologyHierarchyFigure, instancesCountFigures)
         elif pathname == '/about':
-            print(pathname)
             return initializeAbout()
 
     @dashApp.callback(
@@ -50,3 +48,5 @@ def initializeCallbacks(dashApp):
                 print(query)
                 table = LF.userQuery(query)
                 return table.to_dict('records'), [{'id': column, 'name': column} for column in table.columns]
+        else:
+            return dict(), list()

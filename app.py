@@ -17,7 +17,7 @@ def initializeDashApp():
     dashApp.title = 'DBpedia Dashboard'
 
     # initialize all layouts
-    LHTML.homePageLayout(dashApp)
+    LHTML.rootLayout(dashApp)
 
     return app, dashApp
 

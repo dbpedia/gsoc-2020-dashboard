@@ -6,7 +6,6 @@ import pandas as pd
 
 def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyHierarchyFigure, instancesCountFigures):
     df = pd.read_csv('https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/data/Ontologies.csv')
-    print(df)
 
     homePage = html.Div([
 

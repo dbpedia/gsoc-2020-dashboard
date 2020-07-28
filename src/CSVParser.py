@@ -9,10 +9,7 @@ def toInstanceCount(csv_data):
     instancesCount['class'] = instancesCount['class'].apply(lambda s: s[s.rindex('/') + 1:].replace('#', ''))
     instancesCount['subclass'] = instancesCount['subclass'].apply(lambda s: s[s.rindex('/') + 1:].replace('#', ''))
 
-    print(instancesCount)
-
     parentClasses = instancesCount.groupby(by='class', as_index=False).sum()
-    print(parentClasses)
 
     return parentClasses, instancesCount
 
