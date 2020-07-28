@@ -1,5 +1,5 @@
 import plotly.graph_objs as go
-import plotly.offline as plt
+
 
 def ontologySunburst(plotData):
     parents = [""]
@@ -8,12 +8,12 @@ def ontologySunburst(plotData):
     labels.extend(plotData[1])
 
     ontologyFigure = go.Figure(
-        go.Sunburst(labels=labels, parents=parents)
+        go.Sunburst(labels=labels, parents=parents, maxdepth=2)
     )
 
     ontologyFigure.update_layout(
         margin=dict(t=0, b=0, r=0, l=0, pad=0),
-        height=1300,
+        height=500,
         polar_bgcolor='#292B2C',
         paper_bgcolor='#292B2C',
         font_size=15,
@@ -34,7 +34,7 @@ def parentClassesBar(plotDataParent):
     ))
 
     instancesFigure.update_layout(
-        height=300,
+        height=500,
         margin=dict(t=0, b=0, r=0, l=0, pad=0),
         plot_bgcolor='#292B2C',
         paper_bgcolor='#292B2C',

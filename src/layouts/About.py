@@ -47,6 +47,6 @@ def initializeAbout():
                    className='about_content'),
         ], className='col'),
 
-    ], className='w-100 row m-0 p-0 text-center')
+    ], className='w-100 row mt-5 p-0 text-center')
 
     return about

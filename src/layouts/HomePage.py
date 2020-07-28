@@ -4,7 +4,7 @@ import dash_table
 import pandas as pd
 
 
-def initializeHomePage(totalTriples, totalClasses, totalProperties):
+def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyHierarchyFigure, instancesCountFigures):
     df = pd.read_csv('https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/data/Ontologies.csv')
     print(df)
 
@@ -57,7 +57,45 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties):
                                                         'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
                                                                       '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
             ], className='col')
-        ], className='row', style={'margin': 10}),
+        ], className='row', style={'margin': 20}),
+
+        # plots
+        html.Div(children=[
+            html.Div(children=[
+
+                # ontologies
+                html.Div(children=[
+                    html.Div([
+                        html.Button('Ontologies', id='btn_ontologies', n_clicks=0,
+                                    className='btn btn-secondary btn-lg btn-block')
+                    ], className='col m-0 p-0'),
+                    dcc.Loading(type='cube', className='align-items-center', children=[
+                        html.Div(id='ontology_container', children=[
+                            html.Div(id='ontology', children=[
+                                dcc.Graph(figure=ontologyHierarchyFigure)
+                            ])
+                        ], className='card w-100 bg-dark')
+                    ])
+                ], className='col', style={'min-width': '500px'}),
+
+                # instances count
+                html.Div(children=[
+                    html.Div([
+                        html.Button('Instances Count', id='btn_instancescount', n_clicks=0,
+                                    className='btn btn-secondary btn-lg btn-block')
+                    ], className='col m-0 p-0'),
+                    html.Div([
+                        dcc.Loading(type='cube',
+                                    className='h-100 align-items-center',
+                                    children=[
+                                        html.Div(id='parent_instances', children=[
+                                            dcc.Graph(id='parent_instances_bar', figure=instancesCountFigures['parent'])
+                                        ])
+                                    ])
+                    ]),
+                ], className='col', style={'min-width': '500px'}),
+            ], className='row w-100 m-0 p-0')
+        ], style={'margin': 20}),
 
         # SPARQL Editor
         html.Div([
@@ -120,8 +158,7 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties):
                 ], className='row w-100 m-0 p-0')
             ], className='card-body')
         ], className='card', style={'background-color': '#394247', 'margin': 20, 'border-radius': '10px',
-                                    'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
-                                                  '0 6px 20px 0 rgba(0, 0, 0, 0.48)'}),
+                                    'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48), 0 6px 20px 0 rgba(0, 0, 0, 0.48)'}),
 
     ])
 

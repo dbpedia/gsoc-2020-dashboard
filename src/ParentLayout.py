@@ -18,24 +18,7 @@ def homePageLayout(dashApp):
         ], className='navbar navbar-dark bg-dark', style={'padding-left': 20, 'padding-right': 20, 'padding-top': 3,
                                                           'padding-bottom': 3}),
 
-        # tabs
-        html.Div(id='tabs', children=[
-            html.Div([
-                html.Div(id='clicked-button', children='ontologies:0 instancescount:0 last:nan',
-                         style={'display': 'none'}),
-                html.Div([
-                    html.Button('Ontologies', id='btn_ontologies', n_clicks=0,
-                                className='btn btn-secondary btn-lg btn-block')
-                ], className='col m-0 p-0'),
-                html.Div([
-                    html.Button('Instances Count', id='btn_instancescount', n_clicks=0,
-                                className='btn btn-secondary btn-lg btn-block')
-                ], className='col m-0 p-0')
-            ], className='row w-100 m-0 p-0'),
-        ], style={'margin': 20}),
-        html.Div(id='display-clicked', children=''),
-
-        html.Div(id='container'),
+        html.Div(id='container')
 
         # tidy tree
         # html.Div([
