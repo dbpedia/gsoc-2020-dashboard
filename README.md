@@ -1,4 +1,4 @@
-# gsoc-2020-dashboard
+# Google Summer of Code 2020 Dashboard
 
 Currently, DBpedia holds huge amount of data and latest-core gets updated regularly.
 So, it is important to know the statistics of these cores.
