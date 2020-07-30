@@ -4,7 +4,7 @@ import dash_table
 import pandas as pd
 
 
-def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyHierarchyFigure, instancesCountFigures):
+def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigures, instancesCountFigures):
     df = pd.read_csv('https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/data/Ontologies.csv')
 
     homePage = html.Div([
@@ -64,14 +64,15 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyHier
 
                 # ontologies
                 html.Div(children=[
-                    html.Div([
-                        html.Button('Ontologies', id='btn_ontologies', n_clicks=0,
-                                    className='btn btn-secondary btn-lg btn-block')
+                    html.Div(children=[
+                        html.Button('Ontologies 🛈', id='btn_ontologies', n_clicks=0,
+                                    className='btn btn-dark btn-lg btn-block',
+                                    title='Click to Change Ontologies Hierarchy Plot')
                     ], className='col m-0 p-0'),
-                    dcc.Loading(type='cube', className='align-items-center', children=[
+                    dcc.Loading(type='cube', className='h-100 align-items-center', children=[
                         html.Div(id='ontology_container', children=[
-                            html.Div(id='ontology', children=[
-                                dcc.Graph(figure=ontologyHierarchyFigure)
+                            html.Div(children=[
+                                dcc.Graph(id='ontology')
                             ])
                         ], className='card w-100 bg-dark')
                     ])
