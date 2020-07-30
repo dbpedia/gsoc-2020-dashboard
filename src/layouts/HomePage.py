@@ -82,7 +82,7 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigu
                 html.Div(children=[
                     html.Div([
                         html.Button('Instances Count', id='btn_instancescount', n_clicks=0,
-                                    className='btn btn-secondary btn-lg btn-block')
+                                    className='btn btn-dark btn-lg btn-block', disabled=True)
                     ], className='col m-0 p-0'),
                     html.Div([
                         dcc.Loading(type='cube',
