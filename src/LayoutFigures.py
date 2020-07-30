@@ -48,6 +48,24 @@ def totalProperties():
     return str(totalProperties.iloc[0]['x'])
 
 
+def blankSubjects():
+    results = RD.sparqlWrapper(
+        "SELECT (COUNT(DISTINCT ?s) AS ?x) WHERE { ?s ?p ?o FILTER(isBlank(?s))}",
+        CSV
+    )
+    blankSubjects = CSVP.parseCounts(results)
+    return str(blankSubjects.iloc[0]['x'])
+
+
+def blankObjects():
+    results = RD.sparqlWrapper(
+        "SELECT (COUNT(DISTINCT ?o ) AS ?x) WHERE { ?s ?p ?o FILTER(isBlank(?o))}",
+        CSV
+    )
+    blankSubjects = CSVP.parseCounts(results)
+    return str(blankSubjects.iloc[0]['x'])
+
+
 def userQuery(query):
     results = RD.sparqlWrapper(
         query, CSV

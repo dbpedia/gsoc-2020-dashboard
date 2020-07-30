@@ -4,12 +4,14 @@ import dash_table
 import pandas as pd
 
 
-def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigures, instancesCountFigures):
-    df = pd.read_csv('https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/data/Ontologies.csv')
+def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigures, instancesCountFigures,
+                       blankSubjects, blankObjects):
+    # df = pd.read_csv('https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/data/Ontologies.csv')
+    df = pd.DataFrame({'Value 1': 'Value 2', 'Value 3': 'Value 4'}.items())
 
     homePage = html.Div([
 
-        # SPORTAL Statistics
+        # SPORTAL Statistics 1
         html.Div([
             html.Div([
                 html.Div([
@@ -96,6 +98,74 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigu
                 ], className='col', style={'min-width': '500px'}),
             ], className='row w-100 m-0 p-0')
         ], style={'margin': 20}),
+
+        # SPORTAL Statistics 2
+        html.Div([
+
+            #subjects
+            # html.Div([
+            #     html.Div([
+            #         html.Div([
+            #             html.Label('Distinct Subject Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+            #             dcc.Loading(type='dot', children=[
+            #                 html.Label(id='distinct-subjects-label',
+            #                            children=[distinctSubjects],
+            #                            style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+            #                                   'line-height': '120%'})
+            #             ])
+            #         ], className='card-body', style={'padding': 15})
+            #     ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
+            #                                             'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+            #                                                           '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+            # ], className='col'),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.Label('Blank Subject Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        dcc.Loading(type='dot', children=[
+                            html.Label(id='blank-subjects-label',
+                                       children=[blankSubjects],
+                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                              'line-height': '120%'})
+                        ])
+                    ], className='card-body', style={'padding': 15})
+                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+            ], className='col'),
+
+            #objects
+            # html.Div([
+            #     html.Div([
+            #         html.Div([
+            #             html.Label('Distinct Object Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+            #             dcc.Loading(type='dot', children=[
+            #                 html.Label(id='distinct-objects-label',
+            #                            children=[distinctObjects],
+            #                            style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+            #                                   'line-height': '120%'})
+            #             ])
+            #         ], className='card-body', style={'padding': 15})
+            #     ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
+            #                                             'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+            #                                                           '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+            # ], className='col'),
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.Label('Blank Object Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        dcc.Loading(type='dot', children=[
+                            html.Label(id='blank-objects-label',
+                                       children=[blankObjects],
+                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                              'line-height': '120%'})
+                        ])
+                    ], className='card-body', style={'padding': 15})
+                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+            ], className='col'),
+        ], className='row', style={'margin': 20}),
 
         # SPARQL Editor
         html.Div([

@@ -1,4 +1,5 @@
 import dash_core_components as dcc
+from flask import send_file
 from dash.dependencies import Output, Input
 
 import src.LayoutFigures as LF
@@ -12,6 +13,8 @@ def initializeCallbacks(dashApp):
     totalTriples = LF.totalTriples()
     totalClasses = LF.totalClasses()
     totalProperties = LF.totalProperties()
+    blankSubjects = LF.blankSubjects()
+    blankObjects = LF.blankObjects()
 
     @dashApp.callback(
         Output('container', 'children'),
@@ -20,7 +23,7 @@ def initializeCallbacks(dashApp):
     def navigation(pathname):
         if pathname == '/':
             return initializeHomePage(totalTriples, totalClasses, totalProperties,
-                                      ontologyFigures, instancesCountFigures)
+                                      ontologyFigures, instancesCountFigures, blankSubjects, blankObjects)
         elif pathname == '/about':
             return initializeAbout()
 
@@ -57,3 +60,11 @@ def initializeCallbacks(dashApp):
                 return table.to_dict('records'), [{'id': column, 'name': column} for column in table.columns]
         else:
             return dict(), list()
+
+
+    # @dashApp.callback(
+    #     Output[],
+    #     [Input('download-button', 'n_clicks')]
+    # )
+    # def download_response(n_clicks):
+    #     return send_file()

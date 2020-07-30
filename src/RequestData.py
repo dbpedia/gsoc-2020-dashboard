@@ -7,6 +7,7 @@ def sparqlWrapper(query, format):
 
     sparql.setQuery(query=query)
     sparql.setReturnFormat(format)
+    sparql.setTimeout(10000)
     # sparql.addDefaultGraph("http://dbpedia.org")
 
     print("fetching results...")

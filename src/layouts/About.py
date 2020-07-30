@@ -30,21 +30,25 @@ def initializeAbout():
     about = html.Div(id='about_container', children=[
 
         html.Div([
-            html.P(id='introduction_content',
-                   children=introduction_content,
-                   className='about_content'),
-            html.H3(id='problem_heading',
-                    children='Problem',
-                    className='about_content'),
-            html.P(id='problem_content',
-                   children=problem_statement,
-                   className='about_content'),
-            html.H3(id='solution_heading',
-                    children='Solution',
-                    className='about_content'),
-            html.P(id='solution_content',
-                   children=solution_statement,
-                   className='about_content'),
+            html.Div([
+                html.Div([
+                    html.P(id='introduction_content',
+                           children=introduction_content,
+                           className='about_content'),
+                    html.H3(id='problem_heading',
+                            children='Problem',
+                            className='about_content'),
+                    html.P(id='problem_content',
+                           children=problem_statement,
+                           className='about_content'),
+                    html.H3(id='solution_heading',
+                            children='Solution',
+                            className='about_content'),
+                    html.P(id='solution_content',
+                           children=solution_statement,
+                           className='about_content'),
+                ], className='card-body')
+            ], className='card')
         ], className='col'),
 
     ], className='w-100 row mt-5 p-0 text-center')
