@@ -1,5 +1,5 @@
 import dash_core_components as dcc
-from flask import send_file
+import dash_table
 from dash.dependencies import Output, Input
 
 import src.LayoutFigures as LF
@@ -47,8 +47,7 @@ def initializeCallbacks(dashApp):
                    [label + ' Class Instances']
 
     @dashApp.callback(
-        [Output('response-datatable', 'data'),
-         Output('response-datatable', 'columns')],
+        Output('response-datatable-div', 'children'),
         [Input('sparql-query-input', 'value'),
          Input('run-query-button', 'n_clicks')]
     )
@@ -57,9 +56,16 @@ def initializeCallbacks(dashApp):
             if query is not None or query != '':
                 print(query)
                 table = LF.userQuery(query)
-                return table.to_dict('records'), [{'id': column, 'name': column} for column in table.columns]
+                table = dash_table.DataTable(
+                    id='response-datatable',
+                    data=table.to_dict('records'),
+                    columns=[{'id': c, 'name': c} for c in table.columns],
+                    page_size=10,
+                    style_cell={'textAlign': 'left', 'minWidth': '180px', 'padding': 10},
+                )
+                return table
         else:
-            return dict(), list()
+            return ''
 
 
     # @dashApp.callback(

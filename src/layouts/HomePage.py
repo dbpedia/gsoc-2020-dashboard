@@ -7,7 +7,6 @@ import pandas as pd
 def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigures, instancesCountFigures,
                        blankSubjects, blankObjects):
     # df = pd.read_csv('https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/data/Ontologies.csv')
-    df = pd.DataFrame({'Value 1': 'Value 2', 'Value 3': 'Value 4'}.items())
 
     homePage = html.Div([
 
@@ -74,7 +73,7 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigu
                     dcc.Loading(type='cube', className='h-100 align-items-center', children=[
                         html.Div(id='ontology_container', children=[
                             html.Div(children=[
-                                dcc.Graph(id='ontology')
+                                dcc.Graph(id='ontology', figure=ontologyFigures[1])
                             ])
                         ], className='card w-100 bg-dark')
                     ])
@@ -210,21 +209,14 @@ def initializeHomePage(totalTriples, totalClasses, totalProperties, ontologyFigu
                                            'color': '#FFFFFF'})
                     ], className='col'),
                     html.Div([
-                        html.Button('Download', id='download-button', className='btn',
+                        html.Button('Download', id='download-button', className='btn', disabled=True,
                                     style={'width': '100%', 'height': '100%', 'background-color': '#e8aa24',
                                            'color': '#FFFFFF'})
                     ], className='col'),
                 ], className='row w-100 m-0 p-0'),
 
                 html.Div([
-                    html.Div([
-                        dash_table.DataTable(
-                            id='response-datatable',
-                            data=df.to_dict('records'),
-                            columns=[{'id': c, 'name': c} for c in df.columns],
-                            style_cell={'textAlign': 'left', 'minWidth': '180px', 'padding': 10},
-                        )
-                    ], className='col', style={'margin': 20})
+                    html.Div(id='response-datatable-div', className='col', style={'margin': 20})
                 ], className='row w-100 m-0 p-0')
             ], className='card-body')
         ], className='card', style={'background-color': '#394247', 'margin': 20, 'border-radius': '10px',
