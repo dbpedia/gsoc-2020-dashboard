@@ -48,9 +48,10 @@ def initializeAbout():
                            children=solution_statement,
                            className='about_content'),
                 ], className='card-body')
-            ], className='card')
+            ], className='card bg-dark', style={'border-radius': '5px', 'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
+                                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
         ], className='col'),
 
-    ], className='w-100 row mt-5 p-0 text-center')
+    ], className='row m-5 p-0 text-center')
 
     return about
