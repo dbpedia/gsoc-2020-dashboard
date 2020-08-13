@@ -1,16 +1,24 @@
 from SPARQLWrapper import JSON, CSV
-
+from os import path
+import pandas as pd
 import src.CSVParser as CSVP
 import src.JSONParser as JP
 import src.RequestData as RD
 import src.Visualize as VI
 
+dataPath = 'data/v1'
 
 def ontologyHierarchy():
+    results = ''
+    # if path.exists(dataPath + '/Ontologies.csv'):
+    #     results = pd.read_csv(dataPath + '/Ontologies.csv')
+    #     print("results: ", results)
+    # else:
     results = RD.sparqlWrapper(
         "select ?class ?subclass ?depth { ?subclass rdfs:subClassOf ?class . { select ?subclass (COUNT(?class)-1 AS ?depth) { ?subclass rdfs:subClassOf* ?class . ?class rdfs:subClassOf* owl:Thing . } } } ORDER BY ?depth ?class ?subclass",
         JSON)
     ontologyData = JP.toOntologyHierarchy(results)
+    print(ontologyData)
     return VI.ontologySunburst(ontologyData)
 
 

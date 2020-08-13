@@ -1,6 +1,9 @@
+import pandas as pd
+
 def toOntologyHierarchy(json_data):
     superClasses = list()
     subClasses = list()
+    subClasses.append('owlThing')
     topLevel = list()
 
     for row in json_data['results']['bindings']:
@@ -21,4 +24,7 @@ def toOntologyHierarchy(json_data):
             superClasses.append(superClass)
             subClasses.append(subClass)
 
-    return (superClasses, subClasses)
+    ontologyDataFrame = pd.DataFrame()
+    ontologyDataFrame['parents'] = pd.Series(superClasses)
+    ontologyDataFrame['labels'] = pd.Series(subClasses)
+    return ontologyDataFrame

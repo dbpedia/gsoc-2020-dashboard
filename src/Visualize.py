@@ -1,14 +1,10 @@
 import plotly.graph_objs as go
-
+import pandas as pd
 
 def ontologySunburst(plotData):
-    parents = [""]
-    parents.extend(plotData[0])
-    labels = ["owlThing"]
-    labels.extend(plotData[1])
 
     ontologySunburstFigure = go.Figure(
-        go.Sunburst(labels=labels, parents=parents, maxdepth=2)
+        go.Sunburst(labels=plotData['labels'], parents=plotData['parents'], maxdepth=2)
     )
 
     ontologySunburstFigure.update_layout(
@@ -21,7 +17,7 @@ def ontologySunburst(plotData):
     )
 
     ontologyTreemapFigure = go.Figure(
-        go.Treemap(labels=labels, parents=parents)
+        go.Treemap(labels=plotData['labels'], parents=plotData['parents'])
     )
 
     ontologyTreemapFigure.update_layout(
