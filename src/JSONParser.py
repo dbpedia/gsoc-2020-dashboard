@@ -1,8 +1,8 @@
 import pandas as pd
 
 def toOntologyHierarchy(json_data):
-    superClasses = list()
-    subClasses = list()
+    superClasses, subClasses = list(), list()
+    superClasses.append('')
     subClasses.append('owlThing')
     topLevel = list()
 

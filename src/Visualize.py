@@ -1,8 +1,7 @@
 import plotly.graph_objs as go
-import pandas as pd
+
 
 def ontologySunburst(plotData):
-
     ontologySunburstFigure = go.Figure(
         go.Sunburst(labels=plotData['labels'], parents=plotData['parents'], maxdepth=2)
     )

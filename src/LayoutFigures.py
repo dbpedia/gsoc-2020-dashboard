@@ -9,24 +9,32 @@ import src.Visualize as VI
 dataPath = 'data/v1'
 
 def ontologyHierarchy():
-    results = ''
-    # if path.exists(dataPath + '/Ontologies.csv'):
-    #     results = pd.read_csv(dataPath + '/Ontologies.csv')
-    #     print("results: ", results)
-    # else:
-    results = RD.sparqlWrapper(
-        "select ?class ?subclass ?depth { ?subclass rdfs:subClassOf ?class . { select ?subclass (COUNT(?class)-1 AS ?depth) { ?subclass rdfs:subClassOf* ?class . ?class rdfs:subClassOf* owl:Thing . } } } ORDER BY ?depth ?class ?subclass",
-        JSON)
-    ontologyData = JP.toOntologyHierarchy(results)
-    print(ontologyData)
+    ontologyData = ''
+    if path.exists(dataPath + '/Ontologies.csv'):
+        ontologyData = pd.read_csv(dataPath + '/Ontologies.csv')
+        print('done 1')
+    else:
+        results = RD.sparqlWrapper(
+            "select ?class ?subclass ?depth { ?subclass rdfs:subClassOf ?class . { select ?subclass (COUNT(?class)-1 AS ?depth) { ?subclass rdfs:subClassOf* ?class . ?class rdfs:subClassOf* owl:Thing . } } } ORDER BY ?depth ?class ?subclass",
+            JSON)
+        ontologyData = JP.toOntologyHierarchy(results)
+        ontologyData.to_csv('data/v1/Ontologies.csv', index=False, index_label=False)
     return VI.ontologySunburst(ontologyData)
 
 
 def instanceCount():
-    results = RD.sparqlWrapper(
-        "SELECT distinct ?class ?subclass count (distinct ?instance) as ?tier2count  WHERE {{ ?subclass rdfs:subClassOf ?class FILTER (?class in (dbo:Person, dbo:Organisation, dbo:Place, dbo:Work, dbo:Event)) } UNION { SELECT ?subclass ?class { VALUES (?subclass ?class){ (dbo:Person dbo:Person) (dbo:Organization dbo:Organization) (dbo:Place dbo:Place) (dbo:Work dbo:Work) (dbo:Event dbo:Event)}}} ?instance rdf:type/rdfs:subClassOf* ?subclass . } Group by ?class ?subclass ORDER by ?class",
-        CSV)
-    parentClasses, instancesCount = CSVP.toInstanceCount(results)
+    parentClasses, instancesCount = '', ''
+    if path.exists(dataPath + '/instancesCount.csv') and path.exists(dataPath + '/parentClasses.csv'):
+        parentClasses = pd.read_csv(dataPath + '/parentClasses.csv')
+        instancesCount = pd.read_csv(dataPath + '/instancesCount.csv')
+        print('done 2')
+    else:
+        results = RD.sparqlWrapper(
+            "SELECT distinct ?class ?subclass count (distinct ?instance) as ?tier2count  WHERE {{ ?subclass rdfs:subClassOf ?class FILTER (?class in (dbo:Person, dbo:Organisation, dbo:Place, dbo:Work, dbo:Event)) } UNION { SELECT ?subclass ?class { VALUES (?subclass ?class){ (dbo:Person dbo:Person) (dbo:Organization dbo:Organization) (dbo:Place dbo:Place) (dbo:Work dbo:Work) (dbo:Event dbo:Event)}}} ?instance rdf:type/rdfs:subClassOf* ?subclass . } Group by ?class ?subclass ORDER by ?class",
+            CSV)
+        parentClasses, instancesCount = CSVP.toInstanceCount(results)
+        parentClasses.to_csv('data/v1/parentClasses.csv', index_label=False, index=False)
+        instancesCount.to_csv('data/v1/instancesCount.csv', index_label=False, index=False)
     return VI.instanceCountBar(parentClasses, instancesCount)
 
 
