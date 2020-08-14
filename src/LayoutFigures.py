@@ -1,14 +1,32 @@
 from os import path
 
 import pandas as pd
+import plotly.graph_objs as go
 from SPARQLWrapper import JSON, CSV
 
 import src.CSVParser as CSVP
+import src.Constants as Constants
 import src.JSONParser as JP
 import src.RequestData as RD
-import src.Visualize as VI
 
 dataPath = 'data/v1'
+bgColor = '#292B2C'
+fontColor = '#FFFFFF'
+fontSize = 15
+height = 500
+spacing = dict(t=0, b=0, r=0, l=0, pad=0)
+
+
+def ontologySunburst(ontologyData):
+    ontologySunburstFigure = go.Figure(go.Sunburst(labels=ontologyData['labels'], parents=ontologyData['parents'], maxdepth=2))
+    ontologyTreemapFigure = go.Figure(go.Treemap(labels=ontologyData['labels'], parents=ontologyData['parents']))
+
+    ontologySunburstFigure.update_layout(margin=spacing, height=height, polar_bgcolor=bgColor, paper_bgcolor=bgColor,
+                                         font_size=fontSize, font_color=fontColor)
+    ontologyTreemapFigure.update_layout(margin=spacing, height=height, polar_bgcolor=bgColor, paper_bgcolor=bgColor,
+                                        font_size=fontSize, font_color=fontColor)
+
+    return [ontologyTreemapFigure, ontologySunburstFigure]
 
 
 def ontologyHierarchy():
@@ -17,12 +35,29 @@ def ontologyHierarchy():
         ontologyData = pd.read_csv(dataPath + '/Ontologies.csv')
         print('ontologies fetched from the file')
     else:
-        results = RD.sparqlWrapper(
-            "select ?class ?subclass ?depth { ?subclass rdfs:subClassOf ?class . { select ?subclass (COUNT(?class)-1 AS ?depth) { ?subclass rdfs:subClassOf* ?class . ?class rdfs:subClassOf* owl:Thing . } } } ORDER BY ?depth ?class ?subclass",
-            JSON)
+        results = RD.sparqlWrapper(Constants.ONTOLOGY_HIERARCHY, JSON)
         ontologyData = JP.toOntologyHierarchy(results)
         ontologyData.to_csv('data/v1/Ontologies.csv', index=False, index_label=False)
-    return VI.ontologySunburst(ontologyData)
+        print('ontologies fetched using query')
+    return ontologySunburst(ontologyData)
+
+
+def parentClassesBar(plotDataParent):
+    barColors = ['#004D40', '#BF360C', '#01579B', '#FFAB00', '#FFFFFF']
+
+    instancesFigure = go.Figure(go.Bar(x=plotDataParent['tier2count'], y=plotDataParent['class'], orientation='h',
+                                       marker=dict(color=barColors)))
+
+    instancesFigure.update_layout(height=height, margin=spacing, plot_bgcolor=bgColor, paper_bgcolor=bgColor, font_size=fontSize,
+                                  font_color=fontColor, yaxis=dict(showgrid=False))
+
+    return instancesFigure
+
+
+def instanceCountBar(plotDataParent):
+    instanceCountsFigures = dict()
+    instanceCountsFigures['parent'] = parentClassesBar(plotDataParent)
+    return instanceCountsFigures
 
 
 def instanceCount():
@@ -32,62 +67,44 @@ def instanceCount():
         instancesCount = pd.read_csv(dataPath + '/InstancesCount.csv')
         print('instances fetched from the file')
     else:
-        results = RD.sparqlWrapper(
-            "SELECT distinct ?class ?subclass count (distinct ?instance) as ?tier2count  WHERE {{ ?subclass rdfs:subClassOf ?class FILTER (?class in (dbo:Person, dbo:Organisation, dbo:Place, dbo:Work, dbo:Event)) } UNION { SELECT ?subclass ?class { VALUES (?subclass ?class){ (dbo:Person dbo:Person) (dbo:Organization dbo:Organization) (dbo:Place dbo:Place) (dbo:Work dbo:Work) (dbo:Event dbo:Event)}}} ?instance rdf:type/rdfs:subClassOf* ?subclass . } Group by ?class ?subclass ORDER by ?class",
-            CSV)
+        results = RD.sparqlWrapper(Constants.INSTANCES_COUNT, CSV)
         parentClasses, instancesCount = CSVP.toInstanceCount(results)
         parentClasses.to_csv('data/v1/ParentClasses.csv', index_label=False, index=False)
         instancesCount.to_csv('data/v1/InstancesCount.csv', index_label=False, index=False)
-    return VI.instanceCountBar(parentClasses, instancesCount)
+    return instanceCountBar(parentClasses)
 
 
 def totalTriples():
-    results = RD.sparqlWrapper(
-        "SELECT (COUNT(*) AS ?x) WHERE { ?s ?p ?o }",
-        CSV)
+    results = RD.sparqlWrapper(Constants.TOTAL_TRIPLES, CSV)
     totalTriples = CSVP.parseCounts(results)
     return str(totalTriples.iloc[0]['x'])
 
 
 def totalClasses():
-    results = RD.sparqlWrapper(
-        "SELECT (COUNT(DISTINCT ?o) AS ?x) WHERE { ?s a ?o }",
-        CSV
-    )
+    results = RD.sparqlWrapper(Constants.TOTAL_CLASSES, CSV)
     totalClasses = CSVP.parseCounts(results)
     return str(totalClasses.iloc[0]['x'])
 
 
 def totalProperties():
-    results = RD.sparqlWrapper(
-        "SELECT (COUNT(DISTINCT ?p) AS ?x) WHERE { ?s ?p ?o }",
-        CSV
-    )
+    results = RD.sparqlWrapper(Constants.TOTAL_PROPERTIES, CSV)
     totalProperties = CSVP.parseCounts(results)
     return str(totalProperties.iloc[0]['x'])
 
 
 def blankSubjects():
-    results = RD.sparqlWrapper(
-        "SELECT (COUNT(DISTINCT ?s) AS ?x) WHERE { ?s ?p ?o FILTER(isBlank(?s))}",
-        CSV
-    )
+    results = RD.sparqlWrapper(Constants.BLANK_SUBJECTS, CSV)
     blankSubjects = CSVP.parseCounts(results)
     return str(blankSubjects.iloc[0]['x'])
 
 
 def blankObjects():
-    results = RD.sparqlWrapper(
-        "SELECT (COUNT(DISTINCT ?o ) AS ?x) WHERE { ?s ?p ?o FILTER(isBlank(?o))}",
-        CSV
-    )
+    results = RD.sparqlWrapper(Constants.BLANK_OBJECTS, CSV)
     blankSubjects = CSVP.parseCounts(results)
     return str(blankSubjects.iloc[0]['x'])
 
 
 def userQuery(query):
-    results = RD.sparqlWrapper(
-        query, CSV
-    )
+    results = RD.sparqlWrapper(query, CSV)
     table = CSVP.parseQueryResponse(results)
     return table
