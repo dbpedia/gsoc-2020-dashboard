@@ -10,11 +10,7 @@ from src.layouts.HomePage import initializeHomePage
 def initializeCallbacks(dashApp):
     ontologyFigures = LF.ontologyHierarchy()
     instancesCountFigures = LF.instanceCount()
-    totalTriples = LF.totalTriples()
-    totalClasses = LF.totalClasses()
-    totalProperties = LF.totalProperties()
-    blankSubjects = LF.blankSubjects()
-    blankObjects = LF.blankObjects()
+    generalStatistics = LF.generalStatistics()
 
     @dashApp.callback(
         Output('container', 'children'),
@@ -22,8 +18,7 @@ def initializeCallbacks(dashApp):
     )
     def navigation(pathname):
         if pathname == '/':
-            return initializeHomePage(totalTriples, totalClasses, totalProperties,
-                                      ontologyFigures, instancesCountFigures, blankSubjects, blankObjects)
+            return initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures)
         elif pathname == '/about':
             return initializeAbout()
 
@@ -66,7 +61,6 @@ def initializeCallbacks(dashApp):
                 return table
         else:
             return ''
-
 
     # @dashApp.callback(
     #     Output[],

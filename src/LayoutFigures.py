@@ -1,3 +1,4 @@
+from io import StringIO
 from os import path
 
 import pandas as pd
@@ -74,34 +75,15 @@ def instanceCount():
     return instanceCountBar(parentClasses)
 
 
-def totalTriples():
-    results = RD.sparqlWrapper(Constants.TOTAL_TRIPLES, CSV)
-    totalTriples = CSVP.parseCounts(results)
-    return str(totalTriples.iloc[0]['x'])
+def generalStatistics():
+    generalStatistics = dict()
 
-
-def totalClasses():
-    results = RD.sparqlWrapper(Constants.TOTAL_CLASSES, CSV)
-    totalClasses = CSVP.parseCounts(results)
-    return str(totalClasses.iloc[0]['x'])
-
-
-def totalProperties():
-    results = RD.sparqlWrapper(Constants.TOTAL_PROPERTIES, CSV)
-    totalProperties = CSVP.parseCounts(results)
-    return str(totalProperties.iloc[0]['x'])
-
-
-def blankSubjects():
-    results = RD.sparqlWrapper(Constants.BLANK_SUBJECTS, CSV)
-    blankSubjects = CSVP.parseCounts(results)
-    return str(blankSubjects.iloc[0]['x'])
-
-
-def blankObjects():
-    results = RD.sparqlWrapper(Constants.BLANK_OBJECTS, CSV)
-    blankSubjects = CSVP.parseCounts(results)
-    return str(blankSubjects.iloc[0]['x'])
+    for targetStat, query in Constants.GENERAL_STATISTICS.items():
+        stats = RD.sparqlWrapper(query, CSV)
+        stats = pd.read_csv(StringIO(stats.decode("utf-8")), sep=',').iloc[0]['counts']
+        generalStatistics[targetStat] = stats
+    print(generalStatistics)
+    return generalStatistics
 
 
 def userQuery(query):
