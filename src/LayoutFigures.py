@@ -1,3 +1,4 @@
+import json
 from io import StringIO
 from os import path
 
@@ -63,26 +64,35 @@ def instanceCountBar(plotDataParent):
 
 def instanceCount():
     parentClasses, instancesCount = '', ''
+
     if path.exists(dataPath + '/InstancesCount.csv') and path.exists(dataPath + '/ParentClasses.csv'):
         parentClasses = pd.read_csv(dataPath + '/ParentClasses.csv')
         instancesCount = pd.read_csv(dataPath + '/InstancesCount.csv')
-        print('instances fetched from the file')
+        print('instances count fetched from the file')
     else:
         results = RD.sparqlWrapper(Constants.INSTANCES_COUNT, CSV)
         parentClasses, instancesCount = CSVP.toInstanceCount(results)
         parentClasses.to_csv('data/v1/ParentClasses.csv', index_label=False, index=False)
         instancesCount.to_csv('data/v1/InstancesCount.csv', index_label=False, index=False)
+        print('instances count fetched using query')
     return instanceCountBar(parentClasses)
 
 
 def generalStatistics():
     generalStatistics = dict()
 
-    for targetStat, query in Constants.GENERAL_STATISTICS.items():
-        stats = RD.sparqlWrapper(query, CSV)
-        stats = pd.read_csv(StringIO(stats.decode("utf-8")), sep=',').iloc[0]['counts']
-        generalStatistics[targetStat] = stats
-    print(generalStatistics)
+    if path.exists(dataPath + '/GeneralStatistics.json'):
+        with open(dataPath + '/GeneralStatistics.json') as generalStatisticsJSON:
+            generalStatistics = json.load(generalStatisticsJSON)
+            print('general statistics fetched from the file')
+    else:
+        for targetStat, query in Constants.GENERAL_STATISTICS.items():
+            stats = RD.sparqlWrapper(query, CSV)
+            stats = pd.read_csv(StringIO(stats.decode("utf-8")), sep=',').iloc[0]['counts']
+            generalStatistics[targetStat] = str(stats)
+        with open(dataPath + '/GeneralStatistics.json', 'w') as generalStatisticsJSON:
+            json.dump(generalStatistics, generalStatisticsJSON)
+        print('general statistics fetched using query')
     return generalStatistics
 
 
