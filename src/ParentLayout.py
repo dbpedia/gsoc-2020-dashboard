@@ -13,8 +13,12 @@ def rootLayout(dashApp):
                 html.Img(src='https://wiki.dbpedia.org/sites/default/files/DBpediaLogoFull.png', height=45,
                          className='d-inline-block')
             ], className='navbar-brand'),
-            html.A(id='about', children=[html.Span('About')], href='/about',
-                        className='navbar-text btn btn-outline-secondary about_content')
+            html.Div([
+                html.A(id='documentation', children=[html.Span('Documentation')], href='/documentation',
+                       className='navbar-text btn btn-outline-secondary about_content'),
+                html.A(id='about', children=[html.Span('About')], href='/about',
+                       className='navbar-text btn btn-outline-secondary about_content')
+            ])
         ], className='navbar navbar-dark bg-dark', style={'padding-left': 20, 'padding-right': 20, 'padding-top': 3,
                                                           'padding-bottom': 3}),
 
