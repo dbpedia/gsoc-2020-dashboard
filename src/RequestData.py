@@ -1,8 +1,7 @@
-from SPARQLWrapper import SPARQLWrapper, JSON, CSV
+from SPARQLWrapper import SPARQLWrapper
 
 
 def sparqlWrapper(query, format):
-    # checking
     # sparql = SPARQLWrapper("https://dbpedia.org/sparql")
     sparql = SPARQLWrapper("http://78.46.100.7:8890/sparql")
 

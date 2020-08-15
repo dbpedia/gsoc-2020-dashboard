@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def toOntologyHierarchy(json_data):
     superClasses, subClasses = list(), list()
     superClasses.append('')
