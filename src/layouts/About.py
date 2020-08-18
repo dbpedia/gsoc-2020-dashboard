@@ -1,8 +1,10 @@
+import dash_core_components as dcc
 import dash_html_components as html
 
 
 def initializeAbout():
-    introduction_content = 'DBpedia dashboard is the project developed by Google Summer of Code student developer Karan Kharecha.'
+    introduction_content = 'DBpedia dashboard is the project developed by Google Summer of Code student developer ' \
+                           '[Karan Kharecha](https://karankharecha.github.io/).'
     problem_statement = 'Due to huge amount of data, it is difficult to maintain the quality and on the other hand it is ' \
                         'also critical to know the statistics of the data core. Most of the users and community members ' \
                         'may find the task of summarizing the data tiresome as this summary of data varies user by user. ' \
@@ -32,21 +34,11 @@ def initializeAbout():
         html.Div([
             html.Div([
                 html.Div([
-                    html.P(id='introduction_content',
-                           children=introduction_content,
-                           className='about_content'),
-                    html.H3(id='problem_heading',
-                            children='Problem',
-                            className='about_content'),
-                    html.P(id='problem_content',
-                           children=problem_statement,
-                           className='about_content'),
-                    html.H3(id='solution_heading',
-                            children='Solution',
-                            className='about_content'),
-                    html.P(id='solution_content',
-                           children=solution_statement,
-                           className='about_content'),
+                    dcc.Markdown(id='introduction_content', children=introduction_content, className='about_content'),
+                    html.H3(id='problem_heading', children='Problem', className='about_content'),
+                    html.P(id='problem_content', children=problem_statement, className='about_content'),
+                    html.H3(id='solution_heading', children='Solution', className='about_content'),
+                    html.P(id='solution_content', children=solution_statement, className='about_content'),
                 ], className='card-body')
             ], className='card bg-dark', style={'border-radius': '5px', 'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
                                                                                       '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
