@@ -4,7 +4,7 @@ from dash.dependencies import Output, Input
 
 import src.LayoutFigures as LF
 from src.layouts.About import initializeAbout
-from src.layouts.HomePage import initializeHomePage
+from src.layouts.Home import initializeHomePage
 
 
 def initializeCallbacks(dashApp):

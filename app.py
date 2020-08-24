@@ -1,7 +1,7 @@
 import os
 import dash
 import src.Callbacks as CB
-import src.ParentLayout as LHTML
+import src.layouts.ParentLayout as LHTML
 
 global dashApp
 
@@ -13,16 +13,16 @@ def initializeDashApp():
                         external_scripts=['https://d3js.org/d3.v5.min.js'],
                         external_stylesheets=[
                             'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'])
-    app = dashApp.server
+    appServer = dashApp.server
     dashApp.title = 'DBpedia Dashboard'
 
     # initialize all layouts
     LHTML.rootLayout(dashApp)
 
-    return app, dashApp
+    return appServer, dashApp
 
 
 if __name__ == '__main__':
-    app, dashApp = initializeDashApp()
+    appServer, dashApp = initializeDashApp()
     CB.initializeCallbacks(dashApp)
     dashApp.run_server(host='0.0.0.0', port=int(os.environ.get('PORT', 8000)))
