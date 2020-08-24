@@ -29,7 +29,7 @@ Event, SocietalEvent, 96973
 ***
 **It terms of removing features:**
 
-SPARQL query of ontology hierarchy returns several classes that are not connected to any other class. Therefore, such orphan classes with no parent class are removed. Below image shows the class named DUL.owl#Event and DUL.owl#InformationObject that are not related to DBpedia's owlThing ontology. Hence, such data points are removed.
+SPARQL query of ontology hierarchy returns several classes that are not connected to any other class. Therefore, such orphan classes with no parent class are removed. Below image shows the class named *DUL.owl#Event* and *DUL.owl#InformationObject* that are not related to DBpedia's owlThing ontology. Hence, such data points are removed.
 
 ![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/orphanclass.png)
 ***
@@ -38,7 +38,7 @@ In order to get everything on single platform where users can query, visualize, 
 
 ![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/sunburst.png)
 
-The above image shows the full sunburst, but on the dashboard, for users' ease, sunburst has been made zoomable by restricting its levels. Moreover, to increase the user interactivity, there is a button named 'Ontologies' that allows users to switch between Treemap and zoomable Sunburst plot. In both of these plots, user can explore the hierarchy of all the classes and determine the class size easily. The home page has another functionality where users can run the SPARQL queries on different cores and specify the format, and execution timeout. Once, the query is executed successfully, the response will be displayed in tabular form with appropriate user interface and pagination.
+The above image shows the full sunburst, but on the dashboard, for users' ease, sunburst has been made zoomable by restricting its levels. Moreover, to increase the user interactivity, there is a button named 'Ontologies' that allows users to switch between Treemap and zoomable Sunburst plot. In both of these plots, user can explore the hierarchy of all the classes and determine the class size easily. The ontology hierarchy starts with the **owlThing** and it is considered as the top most class. Hence, the classes that are not derived from **owlThing**, are not present in the hierarchy. The home page has another functionality where users can run the SPARQL queries on different cores and specify the format, and execution timeout. Once, the query is executed successfully, the response will be displayed in tabular form with appropriate user interface and pagination.
 
 ![home page general statistics](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/homepageplots_2.png)
 
@@ -49,6 +49,10 @@ In the below image, several cards are displayed. The values in the cards are ret
 ![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/general_stats_1.png)
 
 ![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/general_stats_2.png)
+
+The bottom most section of the dashboard is of SPARQL query editor where users can specify the version, format and timeout values. At present, the query will be executed on just latest core. In the below image, it can be seen that users will not have to go back or switch tabs for the response that they have received. When the number of rows are more, **table will have number of pages**, keeping the maximum height of table as it is. This greatly helps users in getting their statistics in more readable format.
+
+![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/table.png)
 
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
