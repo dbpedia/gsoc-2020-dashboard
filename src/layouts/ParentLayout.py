@@ -1,6 +1,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
 
+documentation_link = 'https://github.com/dbpedia/gsoc-2020-dashboard/wiki'
+
 
 def root_layout(dashApp):
     dashApp.layout = html.Div([
@@ -14,7 +16,7 @@ def root_layout(dashApp):
                          className='d-inline-block')
             ], className='navbar-brand'),
             html.Div([
-                html.A(id='documentation', children=[html.Span('Documentation')], href='/documentation',
+                html.A(id='documentation', children=[html.Span('Documentation')], href='documentation_link', target='_blank',
                        className='navbar-text btn btn-outline-secondary about_content'),
                 html.A(id='about', children=[html.Span('About')], href='/about',
                        className='navbar-text btn btn-outline-secondary about_content')
@@ -23,14 +25,5 @@ def root_layout(dashApp):
                                                           'padding-bottom': 3}),
 
         html.Div(id='container')
-
-        # tidy tree
-        # html.Div([
-        #     dcc.Loading(id='tidy_tree_loader', type='cube', className='h-100 align-items-center', children=[
-        #         html.Iframe(src='../assets/radial.html', style={'background': '#FFFFFF', 'width': 1500, 'height':1500}),
-        #     ])
-        # ], className='card w-100 bg-dark'),
-
-        # container for ontologies and instances count
 
     ], className='w-100')
