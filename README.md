@@ -21,9 +21,11 @@ The above image shows the full sunburst, but on the dashboard, for users' ease, 
 
 ![home page general statistics](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/homepageplots_1.png)
 
-In the below image, horizontal bar chart is displayed. The bars that are visualized are those classes that holds the highest number of instances in the latest core. Clicking on the 5 bars will generate the sub-chart based on the selected bar (class). The sub-chart represents the instances count of the selected parent class.
+In the below image, several cards are displayed. The values in the cards are retrieved dynamically by querying the latest-core's endpoint. These are the general statistics of the latest core. Future work includes calculating more statistics and metrics to elaborate all the cores.
 
-![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/instancescount.png)
+![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/general_stats_1.png)
+
+![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/general_stats_2.png)
 
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
