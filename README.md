@@ -14,6 +14,26 @@ Due to huge amount of data, it is difficult to maintain the quality and on the o
 
 ![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/architecture.png)
 
+Above image shows the basic architecture of the current dashboard. This process includes querying the endpoint by using rdflib's sparqlwrapper python library. Using sparqlwrapper, dashboard can stay connected with the specified endpoint. Once the response is received in backend, it will be processed. Several features are removed or modified in order to visualize the data. Below are few of the operations that are done:
+
+***
+In terms of modifications:
+
+Raw Data:<br/>
+"http://dbpedia.org/ontology/Event", "http://dbpedia.org/ontology/SocietalEvent", 96973
+
+Modified Data:<br/>
+Event, SocietalEvent, 96973
+***
+
+***
+It terms of removing features:
+
+SPARQL query of ontology hierarchy returns several classes that are not connected to any other class. Therefore, such orphan classes with no parent class are removed. Below image shows the class named DUL.owl#Event and DUL.owl#InformationObject that are not related to DBpedia's owlThing ontology. Hence, such data points are removed.
+
+![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/orphanclass.png)
+***
+
 In order to get everything on single platform where users can query, visualize, and get knowledge of current data core, a centralized system (dashboard) is useful. This dashboard is the platform that shows key metrics or key performance indicator (KPI) of instances, properties, classes and their subclasses. The first step in designing this system includes visualizing the hierarchy (ontologies) in a way that it shows the instances count proportion of each class and subclass. Several visualizations like sunburst and treemap are used for this displaying the instances count proportion.
 
 ![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/sunburst.png)
