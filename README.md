@@ -29,7 +29,7 @@ Event, SocietalEvent, 96973
 ***
 **It terms of removing features:**
 
-SPARQL query of ontology hierarchy returns several classes that are not connected to any other class. Therefore, such orphan classes with no parent class are removed. Below image shows the class named DUL.owl#Event and DUL.owl#InformationObject that are not related to DBpedia's owlThing ontology. Hence, such data points are removed.
+SPARQL query of ontology hierarchy returns several classes that are not connected to any other class. Therefore, such orphan classes with no parent class are removed. Below image shows the class named *DUL.owl#Event* and *DUL.owl#InformationObject* that are not related to DBpedia's owlThing ontology. Hence, such data points are removed.
 
 ![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/orphanclass.png)
 ***
@@ -49,6 +49,10 @@ In the below image, several cards are displayed. The values in the cards are ret
 ![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/general_stats_1.png)
 
 ![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/general_stats_2.png)
+
+The bottom most section of the dashboard is of SPARQL query editor where users can specify the version, format and timeout values. At present, the query will be executed on just latest core. In the below image, it can be seen that users will not have to go back or switch tabs for the response that they have received. When the number of rows are more, **table will have number of pages**, keeping the maximum height of table as it is. This greatly helps users in getting their statistics in more readable format.
+
+![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/table.png)
 
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
