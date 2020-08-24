@@ -11,6 +11,9 @@ Proposal: [Dashboard for Language/National Knowledge Graphs](https://drive.googl
 Due to huge amount of data, it is difficult to maintain the quality and on the other hand it is also critical to know the statistics of the data core. Most of the users and community members may find the task of summarizing the data, tiresome, as this summary of data varies user by user. Though, there are some basic statistics that can help in getting knowledge of the data core by querying the SPARQL endpoint. However, getting these data programatically or in the tabular form is not appropriate for performing the analysis for quality assessment. Based on SPARQL queries, result sets may get huge which is eventually of no use because of the nature of format.
 
 ## Solution:
+
+![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/architecture.png)
+
 In order to get everything on single platform where users can query, visualize, and get knowledge of current data core, a centralized system (dashboard) is useful. This dashboard is the platform that shows key metrics or key performance indicator (KPI) of instances, properties, classes and their subclasses. The first step in designing this system includes visualizing the hierarchy (ontologies) in a way that it shows the instances count proportion of each class and subclass. Several visualizations like sunburst and treemap are used for this displaying the instances count proportion.
 
 ![sunburst of ontologies hierarchy of latest-core](https://github.com/dbpedia/gsoc-2020-dashboard/blob/master/wiki/sunburst.png)
