@@ -2,8 +2,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 
-def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures):
-    homePage = html.Div([
+def initialize_home_page(general_statistics, ontology_figures, instances_count_figures):
+    home_page = html.Div([
 
         # SPORTAL Statistics 1
         html.Div([
@@ -13,7 +13,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                         html.Label('Total Triples', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='total-triples-label',
-                                       children=generalStatistics['TOTAL_TRIPLES'],
+                                       children=general_statistics['TOTAL_TRIPLES'],
                                        style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
                                               'line-height': '120%'})
                         ])
@@ -28,7 +28,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                         html.Label('Total Classes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='total-classes-label',
-                                       children=generalStatistics['TOTAL_CLASSES'],
+                                       children=general_statistics['TOTAL_CLASSES'],
                                        style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
                                               'line-height': '120%'})
                         ])
@@ -43,7 +43,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                         html.Label('Total Properties', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='total-properties-label',
-                                       children=generalStatistics['TOTAL_PROPERTIES'],
+                                       children=general_statistics['TOTAL_PROPERTIES'],
                                        style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
                                               'line-height': '120%'})
                         ])
@@ -68,7 +68,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                     dcc.Loading(type='cube', className='h-100 align-items-center', children=[
                         html.Div(id='ontology_container', children=[
                             html.Div(children=[
-                                dcc.Graph(id='ontology', figure=ontologyFigures[1])
+                                dcc.Graph(id='ontology', figure=ontology_figures[1])
                             ])
                         ], className='card w-100 bg-dark')
                     ])
@@ -85,7 +85,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                                     className='h-100 align-items-center',
                                     children=[
                                         html.Div(id='parent_instances', children=[
-                                            dcc.Graph(id='parent_instances_bar', figure=instancesCountFigures['parent'])
+                                            dcc.Graph(id='parent_instances_bar', figure=instances_count_figures['parent'])
                                         ])
                                     ])
                     ]),
@@ -118,7 +118,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                         html.Label('Blank Subject Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='blank-subjects-label',
-                                       children=generalStatistics['BLANK_SUBJECTS'],
+                                       children=general_statistics['BLANK_SUBJECTS'],
                                        style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
                                               'line-height': '120%'})
                         ])
@@ -150,7 +150,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                         html.Label('Blank Object Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='blank-objects-label',
-                                       children=generalStatistics['BLANK_OBJECTS'],
+                                       children=general_statistics['BLANK_OBJECTS'],
                                        style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
                                               'line-height': '120%'})
                         ])
@@ -215,4 +215,4 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
 
     ])
 
-    return homePage
+    return home_page

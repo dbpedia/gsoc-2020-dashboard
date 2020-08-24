@@ -1,15 +1,15 @@
 import plotly.graph_objs as go
 
 
-def workClassesPie(plotDataSubClasses, className):
-    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == className]
-    subclassesPie = go.Figure(go.Pie(
-        labels=workSubClasses['subclass'],
-        values=workSubClasses['tier2count'],
+def work_classes_pie(plot_data_subclasses, class_name):
+    work_subclasses = plot_data_subclasses[plot_data_subclasses['class'] == class_name]
+    subclasses_pie = go.Figure(go.Pie(
+        labels=work_subclasses['subclass'],
+        values=work_subclasses['tier2count'],
         textinfo='label+percent',
     ))
 
-    subclassesPie.update_layout(
+    subclasses_pie.update_layout(
         margin=dict(t=0, b=0, r=0, l=0, pad=0),
         plot_bgcolor='#292B2C',
         paper_bgcolor='#292B2C',
@@ -17,18 +17,18 @@ def workClassesPie(plotDataSubClasses, className):
         font_color='#FFFFFF',
     )
 
-    return subclassesPie
+    return subclasses_pie
 
 
-def workClassesBar(plotDataSubClasses, className):
-    workSubClasses = plotDataSubClasses[plotDataSubClasses['class'] == className]
-    subclassesBar = go.Figure(go.Bar(
-        y=workSubClasses['subclass'],
-        x=workSubClasses['tier2count'],
+def work_classes_bar(plot_data_subclasses, class_name):
+    work_subclasses = plot_data_subclasses[plot_data_subclasses['class'] == class_name]
+    subclasses_bar = go.Figure(go.Bar(
+        y=work_subclasses['subclass'],
+        x=work_subclasses['tier2count'],
         orientation='h'
     ))
 
-    subclassesBar.update_layout(
+    subclasses_bar.update_layout(
         margin=dict(t=0, b=0, r=0, l=0, pad=0),
         plot_bgcolor='#292B2C',
         paper_bgcolor='#292B2C',
@@ -36,4 +36,4 @@ def workClassesBar(plotDataSubClasses, className):
         font_color='#FFFFFF',
     )
 
-    return subclassesBar
+    return subclasses_bar

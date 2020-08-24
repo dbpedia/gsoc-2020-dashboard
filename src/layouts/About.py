@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 
-def initializeAbout():
+def initialize_about_page():
     introduction_content = 'DBpedia dashboard is the project developed by Google Summer of Code student developer ' \
                            '[Karan Kharecha](https://karankharecha.github.io/).'
     problem_statement = 'Due to huge amount of data, it is difficult to maintain the quality and on the other hand it is ' \

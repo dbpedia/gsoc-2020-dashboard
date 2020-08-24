@@ -3,14 +3,14 @@ import dash_table
 from dash.dependencies import Output, Input
 
 import src.LayoutFigures as LF
-from src.layouts.About import initializeAbout
-from src.layouts.Home import initializeHomePage
+from src.layouts.About import initialize_about_page
+from src.layouts.Home import initialize_home_page
 
 
-def initializeCallbacks(dashApp):
-    ontologyFigures = LF.ontologyHierarchy()
-    instancesCountFigures = LF.instanceCount()
-    generalStatistics = LF.generalStatistics()
+def initialize_callbacks(dashApp):
+    ontology_figures = LF.ontology_hierarchy()
+    instances_count_figures = LF.instance_count()
+    general_statistics = LF.get_general_statistics()
 
     @dashApp.callback(
         Output('container', 'children'),
@@ -18,27 +18,27 @@ def initializeCallbacks(dashApp):
     )
     def navigation(pathname):
         if pathname == '/':
-            return initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures)
+            return initialize_home_page(general_statistics, ontology_figures, instances_count_figures)
         elif pathname == '/about':
-            return initializeAbout()
+            return initialize_about_page()
 
     @dashApp.callback(
         Output('ontology', 'figure'),
         [Input('btn_ontologies', 'n_clicks')]
     )
     def change_hierarchy(n_clicks):
-        return ontologyFigures[n_clicks % 2]
+        return ontology_figures[n_clicks % 2]
 
     @dashApp.callback(
         [Output('subclasses_instances', 'children'),
          Output('parentclass_label', 'children')],
         [Input('parent_instances_bar', 'clickData')]
     )
-    def subclassesPlots(data):
+    def subclasses_plots(data):
         if data is not None:
             label = data['points'][0]['label']
             print(label)
-            return [dcc.Graph(figure=instancesCountFigures[label + '+Pie'])], \
+            return [dcc.Graph(figure=instances_count_figures[label + '+Pie'])], \
                    [label + ' Class Instances']
 
     @dashApp.callback(
@@ -50,7 +50,7 @@ def initializeCallbacks(dashApp):
         if run is not None:
             if query is not None or query != '':
                 print(query)
-                table = LF.userQuery(query)
+                table = LF.user_query(query)
                 table = dash_table.DataTable(
                     id='response-datatable',
                     data=table.to_dict('records'),

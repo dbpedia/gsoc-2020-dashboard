@@ -1,28 +1,28 @@
 import os
+
 import dash
+
 import src.Callbacks as CB
 import src.layouts.ParentLayout as LHTML
 
-global dashApp
+global dash_app
 
 
-def initializeDashApp():
-    global dashApp
-    dashApp = dash.Dash(__name__,
-                        meta_tags=[{"name": "viewport", "content": "width=1024"}],
-                        external_scripts=['https://d3js.org/d3.v5.min.js'],
-                        external_stylesheets=[
-                            'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'])
-    appServer = dashApp.server
-    dashApp.title = 'DBpedia Dashboard'
+def initialize_dash_app():
+    global dash_app
+    dash_app = dash.Dash(__name__,
+                         meta_tags=[{"name": "viewport", "content": "width=1024"}],
+                         external_stylesheets=['https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'])
+    app_server = dash_app.server
+    dash_app.title = 'DBpedia Dashboard'
 
     # initialize all layouts
-    LHTML.rootLayout(dashApp)
+    LHTML.root_layout(dash_app)
 
-    return appServer, dashApp
+    return app_server, dash_app
 
 
 if __name__ == '__main__':
-    appServer, dashApp = initializeDashApp()
-    CB.initializeCallbacks(dashApp)
-    dashApp.run_server(host='0.0.0.0', port=int(os.environ.get('PORT', 8000)))
+    appServer, dash_app = initialize_dash_app()
+    CB.initialize_callbacks(dash_app)
+    dash_app.run_server(host='0.0.0.0', port=int(os.environ.get('PORT', 8000)))
