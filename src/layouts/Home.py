@@ -177,9 +177,6 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                         dcc.Dropdown(id='format-dropdown',
                                      options=[
                                          {'label': 'CSV', 'value': 'CSV'},
-                                         {'label': 'TSV', 'value': 'TSV'},
-                                         {'label': 'JSON', 'value': 'JSON'},
-                                         {'label': 'HTML', 'value': 'HTML'}
                                      ],
                                      value='CSV')
                     ], className='col'),
@@ -187,9 +184,8 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
                         dcc.Dropdown(id='core-version-dropdown',
                                      options=[
                                          {'label': '2020.0.1', 'value': '2020.0.1'},
-                                         {'label': '2020.1.1', 'value': '2020.1.1'}
                                      ],
-                                     value='2020.1.1')
+                                     value='2020.0.1')
                     ], className='col'),
                     html.Div([
                         dcc.Input(id='execution-timeout-input',
