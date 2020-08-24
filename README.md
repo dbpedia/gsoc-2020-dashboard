@@ -17,7 +17,7 @@ Due to huge amount of data, it is difficult to maintain the quality and on the o
 Above image shows the basic architecture of the current dashboard. This process includes querying the endpoint by using rdflib's sparqlwrapper python library. Using sparqlwrapper, dashboard can stay connected with the specified endpoint. Once the response is received in backend, it will be processed. Several features are removed or modified in order to visualize the data. Below are few of the operations that are done:
 
 ***
-In terms of modifications:
+**In terms of modifications:**
 
 Raw Data:<br/>
 "http://dbpedia.org/ontology/Event", "http://dbpedia.org/ontology/SocietalEvent", 96973
@@ -27,7 +27,7 @@ Event, SocietalEvent, 96973
 ***
 
 ***
-It terms of removing features:
+**It terms of removing features:**
 
 SPARQL query of ontology hierarchy returns several classes that are not connected to any other class. Therefore, such orphan classes with no parent class are removed. Below image shows the class named DUL.owl#Event and DUL.owl#InformationObject that are not related to DBpedia's owlThing ontology. Hence, such data points are removed.
 
