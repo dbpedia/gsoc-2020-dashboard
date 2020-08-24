@@ -166,7 +166,7 @@ def initializeHomePage(generalStatistics, ontologyFigures, instancesCountFigures
             html.Div([
                 html.Div([
                     html.Div([
-                        dcc.Input(id='sparql-query-input', placeholder='SPARQL Query Editor', debounce=False,
+                        dcc.Input(id='sparql-query-input', placeholder='SPARQL Query Editor', debounce=True,
                                   style={'width': '100%', 'align-content': 'center', 'padding': 10,
                                          'border-radius': '5px', 'border': '1px solid #C0C0C0'})
                     ], className='col', style={'margin': 20}),
