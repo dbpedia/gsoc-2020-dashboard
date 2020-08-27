@@ -41,6 +41,12 @@ def initialize_callbacks(dashApp):
             selected_all_instances_data = selected_all_instances_data.sort_values(by='instancecount', ascending=False)
             figure = LF.all_instances_count_plot(selected_all_instances_data)
             return dcc.Graph(id='parent_instances_bar', figure=figure)
+        else:
+            default_data_labels = ontology_data[ontology_data['parents'] == 'owlThing']['labels']
+            selected_all_instances_data = all_instances_count_data[all_instances_count_data['class'].isin(default_data_labels)]
+            selected_all_instances_data = selected_all_instances_data.sort_values(by='instancecount', ascending=False)
+            figure = LF.all_instances_count_plot(selected_all_instances_data)
+            return dcc.Graph(id='parent_instances_bar', figure=figure)
 
     @dashApp.callback(
         Output('response-datatable-div', 'children'),
