@@ -44,37 +44,6 @@ def ontology_hierarchy():
     return ontology_data, ontology_figures(ontology_data)
 
 
-def instance_count_bar(plot_data_parent):
-    instance_counts_figures = dict()
-
-    bar_colors = ['#004D40', '#BF360C', '#01579B', '#FFAB00', '#FFFFFF']
-
-    instances_figure = go.Figure(go.Bar(x=plot_data_parent['tier2count'], y=plot_data_parent['class'], orientation='h',
-                                        marker=dict(color=bar_colors)))
-
-    instances_figure.update_layout(height=height, margin=spacing, plot_bgcolor=bg_color, paper_bgcolor=bg_color, font_size=font_size,
-                                   font_color=font_color, yaxis=dict(showgrid=False))
-
-    instance_counts_figures['parent'] = instances_figure
-    return instance_counts_figures
-
-
-def specific_instance_count():
-    parent_classes, instances_count = '', ''
-
-    if path.exists(data_path + '/InstancesCount.csv') and path.exists(data_path + '/ParentClasses.csv'):
-        parent_classes = pd.read_csv(data_path + '/ParentClasses.csv')
-        instances_count = pd.read_csv(data_path + '/InstancesCount.csv')
-        print('instances count fetched from the file')
-    else:
-        results = RD.sparql_wrapper(Constants.SPECIFIC_INSTANCES_COUNT, CSV)
-        parent_classes, instances_count = CSVP.to_specific_instance_count(results)
-        parent_classes.to_csv('data/v1/ParentClasses.csv', index_label=False, index=False)
-        instances_count.to_csv('data/v1/InstancesCount.csv', index_label=False, index=False)
-        print('instances count fetched using query')
-    return instance_count_bar(parent_classes)
-
-
 def all_instances_count_plot(all_instances_data):
     all_instances_figure = go.Figure(go.Bar(x=all_instances_data['instancecount'], y=all_instances_data['class'],
                                             orientation='h'))

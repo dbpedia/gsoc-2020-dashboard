@@ -10,7 +10,6 @@ from src.layouts.Home import initialize_home_page
 def initialize_callbacks(dashApp):
     ontology_data, ontology_figures = LF.ontology_hierarchy()
     all_instances_count_data, all_instances_count_figure = LF.all_instances_count()
-    specific_instances_count_figures = LF.specific_instance_count()
     general_statistics = LF.get_general_statistics()
 
     @dashApp.callback(
@@ -43,19 +42,6 @@ def initialize_callbacks(dashApp):
             figure = LF.all_instances_count_plot(selected_all_instances_data)
             return dcc.Graph(id='parent_instances_bar', figure=figure)
 
-
-    # @dashApp.callback(
-    #     [Output('subclasses_instances', 'children'),
-    #      Output('parentclass_label', 'children')],
-    #     [Input('parent_instances_bar', 'clickData')]
-    # )
-    # def subclasses_plots(data):
-    #     if data is not None:
-    #         label = data['points'][0]['label']
-    #         print(label)
-    #         return [dcc.Graph(figure=specific_instances_count_figures[label + '+Pie'])], \
-    #                [label + ' Class Instances']
-
     @dashApp.callback(
         Output('response-datatable-div', 'children'),
         [Input('sparql-query-input', 'value'),
@@ -76,10 +62,3 @@ def initialize_callbacks(dashApp):
                 return table
         else:
             return ''
-
-    # @dashApp.callback(
-    #     Output[],
-    #     [Input('download-button', 'n_clicks')]
-    # )
-    # def download_response(n_clicks):
-    #     return send_file()
