@@ -47,6 +47,9 @@ def triples():
     )
 
     triples_figure.update_layout(
+        title='Growth of Triples Over Time',
+        xaxis_title="Triples Count",
+        yaxis_title="Versions",
         plot_bgcolor='#292B2C',
         paper_bgcolor='#292B2C',
         font_size=15,
