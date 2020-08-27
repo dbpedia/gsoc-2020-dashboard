@@ -1,6 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
-
+import src.Visualize as VI
 
 def initialize_home_page(general_statistics, ontology_figures):
     home_page = html.Div([
@@ -84,9 +84,7 @@ def initialize_home_page(general_statistics, ontology_figures):
                         dcc.Loading(type='cube',
                                     className='h-100 align-items-center',
                                     children=[
-                                        html.Div(id='parent_instances', children=[
-
-                                        ])
+                                        html.Div(id='parent_instances')
                                     ])
                     ]),
                 ], className='col', style={'min-width': '500px'}),
@@ -160,6 +158,10 @@ def initialize_home_page(general_statistics, ontology_figures):
                                                                       '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
             ], className='col'),
         ], className='row', style={'margin': 20}),
+
+        html.Div([
+            dcc.Graph(id='triples', figure=VI.triples())
+        ], className='w-100'),
 
         # SPARQL Editor
         html.Div([

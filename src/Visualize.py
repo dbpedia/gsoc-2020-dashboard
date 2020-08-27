@@ -37,3 +37,21 @@ def work_classes_bar(plot_data_subclasses, class_name):
     )
 
     return subclasses_bar
+
+
+def triples():
+    triples_figure = go.Figure(
+        go.Scatter(x=['2020.0.1','2020.0.2','2020.0.3','2020.0.4'],
+                   y=[51711866, 81711866, 281711866, 481711866],
+                   mode='lines+markers', name='lines+markers')
+    )
+
+    triples_figure.update_layout(
+        plot_bgcolor='#292B2C',
+        paper_bgcolor='#292B2C',
+        font_size=15,
+        font_color='#FFFFFF',
+        yaxis=dict(showgrid=False)
+    )
+
+    return triples_figure
