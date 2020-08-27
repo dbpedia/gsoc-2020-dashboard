@@ -2,7 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 
-def initialize_home_page(general_statistics, ontology_figures, instances_count_figures):
+def initialize_home_page(general_statistics, ontology_figures):
     home_page = html.Div([
 
         # SPORTAL Statistics 1
@@ -85,7 +85,7 @@ def initialize_home_page(general_statistics, ontology_figures, instances_count_f
                                     className='h-100 align-items-center',
                                     children=[
                                         html.Div(id='parent_instances', children=[
-                                            dcc.Graph(id='parent_instances_bar', figure=instances_count_figures['parent'])
+
                                         ])
                                     ])
                     ]),

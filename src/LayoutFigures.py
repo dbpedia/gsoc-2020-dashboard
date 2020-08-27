@@ -19,7 +19,7 @@ height = 500
 spacing = dict(t=0, b=0, r=0, l=0, pad=0)
 
 
-def ontology_sunburst(ontology_data):
+def ontology_figures(ontology_data):
     ontology_sunburst_figure = go.Figure(go.Sunburst(labels=ontology_data['labels'], parents=ontology_data['parents'], maxdepth=2))
     ontology_treemap_figure = go.Figure(go.Treemap(labels=ontology_data['labels'], parents=ontology_data['parents']))
 
@@ -41,10 +41,12 @@ def ontology_hierarchy():
         ontology_data = JP.to_ontology_hierarchy(results)
         ontology_data.to_csv('data/v1/Ontologies.csv', index=False, index_label=False)
         print('ontologies fetched using query')
-    return ontology_sunburst(ontology_data)
+    return ontology_data, ontology_figures(ontology_data)
 
 
-def parent_classes_bar(plot_data_parent):
+def instance_count_bar(plot_data_parent):
+    instance_counts_figures = dict()
+
     bar_colors = ['#004D40', '#BF360C', '#01579B', '#FFAB00', '#FFFFFF']
 
     instances_figure = go.Figure(go.Bar(x=plot_data_parent['tier2count'], y=plot_data_parent['class'], orientation='h',
@@ -53,16 +55,11 @@ def parent_classes_bar(plot_data_parent):
     instances_figure.update_layout(height=height, margin=spacing, plot_bgcolor=bg_color, paper_bgcolor=bg_color, font_size=font_size,
                                    font_color=font_color, yaxis=dict(showgrid=False))
 
-    return instances_figure
-
-
-def instance_count_bar(plot_data_parent):
-    instance_counts_figures = dict()
-    instance_counts_figures['parent'] = parent_classes_bar(plot_data_parent)
+    instance_counts_figures['parent'] = instances_figure
     return instance_counts_figures
 
 
-def instance_count():
+def specific_instance_count():
     parent_classes, instances_count = '', ''
 
     if path.exists(data_path + '/InstancesCount.csv') and path.exists(data_path + '/ParentClasses.csv'):
@@ -70,12 +67,35 @@ def instance_count():
         instances_count = pd.read_csv(data_path + '/InstancesCount.csv')
         print('instances count fetched from the file')
     else:
-        results = RD.sparql_wrapper(Constants.INSTANCES_COUNT, CSV)
-        parent_classes, instances_count = CSVP.to_instance_count(results)
+        results = RD.sparql_wrapper(Constants.SPECIFIC_INSTANCES_COUNT, CSV)
+        parent_classes, instances_count = CSVP.to_specific_instance_count(results)
         parent_classes.to_csv('data/v1/ParentClasses.csv', index_label=False, index=False)
         instances_count.to_csv('data/v1/InstancesCount.csv', index_label=False, index=False)
         print('instances count fetched using query')
     return instance_count_bar(parent_classes)
+
+
+def all_instances_count_plot(all_instances_data):
+    all_instances_figure = go.Figure(go.Bar(x=all_instances_data['instancecount'], y=all_instances_data['class'],
+                                            orientation='h'))
+
+    all_instances_figure.update_layout(height=height, margin=spacing, plot_bgcolor=bg_color, paper_bgcolor=bg_color, font_size=font_size,
+                                       font_color=font_color, yaxis=dict(showgrid=False))
+
+    return all_instances_figure
+
+
+def all_instances_count():
+    all_instances_data = ''
+    if path.exists(data_path + '/AllInstances.csv'):
+        all_instances_data = pd.read_csv(data_path + '/AllInstances.csv')
+        print('all instances count fetched from the file')
+    else:
+        results = RD.sparql_wrapper(Constants.ALL_INSTANCES_COUNT, CSV)
+        all_instances_data = CSVP.to_all_instances_count(results)
+        all_instances_data.to_csv('data/v1/AllInstances.csv', index=False, index_label=False)
+        print('all instances fetched using query')
+    return all_instances_data, all_instances_count_plot(all_instances_data)
 
 
 def get_general_statistics():

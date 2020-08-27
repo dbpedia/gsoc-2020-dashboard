@@ -8,8 +8,9 @@ from src.layouts.Home import initialize_home_page
 
 
 def initialize_callbacks(dashApp):
-    ontology_figures = LF.ontology_hierarchy()
-    instances_count_figures = LF.instance_count()
+    ontology_data, ontology_figures = LF.ontology_hierarchy()
+    all_instances_count_data, all_instances_count_figure = LF.all_instances_count()
+    specific_instances_count_figures = LF.specific_instance_count()
     general_statistics = LF.get_general_statistics()
 
     @dashApp.callback(
@@ -18,7 +19,7 @@ def initialize_callbacks(dashApp):
     )
     def navigation(pathname):
         if pathname == '/':
-            return initialize_home_page(general_statistics, ontology_figures, instances_count_figures)
+            return initialize_home_page(general_statistics, ontology_figures)
         elif pathname == '/about':
             return initialize_about_page()
 
@@ -30,16 +31,30 @@ def initialize_callbacks(dashApp):
         return ontology_figures[n_clicks % 2]
 
     @dashApp.callback(
-        [Output('subclasses_instances', 'children'),
-         Output('parentclass_label', 'children')],
-        [Input('parent_instances_bar', 'clickData')]
+        Output('parent_instances', 'children'),
+        [Input('ontology', 'clickData')]
     )
-    def subclasses_plots(data):
+    def update_parent_instances_bar(data):
         if data is not None:
-            label = data['points'][0]['label']
-            print(label)
-            return [dcc.Graph(figure=instances_count_figures[label + '+Pie'])], \
-                   [label + ' Class Instances']
+            selected_class = data['points'][0]['label']
+            selected_ontology_data_labels = ontology_data[ontology_data['parents'] == selected_class]['labels']
+            selected_all_instances_data = all_instances_count_data[all_instances_count_data['class'].isin(selected_ontology_data_labels)]
+            selected_all_instances_data = selected_all_instances_data.sort_values(by='instancecount', ascending=False)
+            figure = LF.all_instances_count_plot(selected_all_instances_data)
+            return dcc.Graph(id='parent_instances_bar', figure=figure)
+
+
+    # @dashApp.callback(
+    #     [Output('subclasses_instances', 'children'),
+    #      Output('parentclass_label', 'children')],
+    #     [Input('parent_instances_bar', 'clickData')]
+    # )
+    # def subclasses_plots(data):
+    #     if data is not None:
+    #         label = data['points'][0]['label']
+    #         print(label)
+    #         return [dcc.Graph(figure=specific_instances_count_figures[label + '+Pie'])], \
+    #                [label + ' Class Instances']
 
     @dashApp.callback(
         Output('response-datatable-div', 'children'),

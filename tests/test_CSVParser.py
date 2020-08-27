@@ -4,7 +4,7 @@ import src.CSVParser as CSVP
 def test_to_instance_count():
     with open('tests/mocks/InstancesCount', 'rb') as mockCSV:
         csv_data = mockCSV.read()
-        values, labels = CSVP.to_instance_count(csv_data)
+        values, labels = CSVP.to_specific_instance_count(csv_data)
         assert values is not None and labels is not None and not values.empty and not labels.empty
 
 
