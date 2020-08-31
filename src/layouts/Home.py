@@ -4,7 +4,7 @@ import dash_html_components as html
 import src.Visualize as VI
 
 
-def initialize_home_page(general_statistics, ontology_figures):
+def initialize_home_page(general_statistics, ontology_figures, triples_count):
     home_page = html.Div([
 
         # SPORTAL Statistics 1
@@ -173,7 +173,7 @@ def initialize_home_page(general_statistics, ontology_figures):
 
         html.Div([
             html.Div([
-                dcc.Graph(id='triples', figure=VI.triples())
+                dcc.Graph(id='triples', figure=VI.triples(triples_count))
             ], className='card-body p-0')
         ], className='card p-3', style={'margin': 30, 'background-color': '#263238', 'border-radius': '5px',
                                     'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'

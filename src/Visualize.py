@@ -36,10 +36,11 @@ def work_classes_bar(plot_data_subclasses, class_name):
     return subclasses_bar
 
 
-def triples():
+def triples(triples_count):
+    print(triples_count)
     triples_figure = go.Figure(
-        go.Scatter(x=['2020.0.1', '2020.0.2', '2020.0.3', '2020.0.4'],
-                   y=[51711866, 81711866, 201011866, 481711866],
+        go.Scatter(x=triples_count['version'],
+                   y=triples_count['triplescount'],
                    mode='lines+markers', name='lines+markers')
     )
 

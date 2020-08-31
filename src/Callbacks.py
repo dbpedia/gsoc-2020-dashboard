@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 import dash_table
+import pandas as pd
 from dash.dependencies import Output, Input
 
 import src.LayoutFigures as LF
@@ -11,6 +12,7 @@ def initialize_callbacks(dashApp):
     ontology_data, ontology_figures = LF.ontology_hierarchy()
     all_instances_count_data, all_instances_count_figure = LF.all_instances_count()
     general_statistics = LF.get_general_statistics()
+    triples_count = pd.read_csv('data/v1/TriplesCount.csv')
 
     @dashApp.callback(
         Output('container', 'children'),
@@ -18,7 +20,7 @@ def initialize_callbacks(dashApp):
     )
     def navigation(pathname):
         if pathname == '/':
-            return initialize_home_page(general_statistics, ontology_figures)
+            return initialize_home_page(general_statistics, ontology_figures, triples_count)
         elif pathname == '/about':
             return initialize_about_page()
 
