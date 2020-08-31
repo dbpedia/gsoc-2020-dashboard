@@ -63,6 +63,8 @@ The bottom most section of the dashboard is of SPARQL query editor where users c
 ![ontologies_document_3](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_3.png)
 ***
 ![ontologies_document_4](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_4.png)
+***
+![ontologies_document_5](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_5.png)
 
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
