@@ -12,7 +12,7 @@ import src.JSONParser as JP
 import src.RequestData as RD
 
 data_path = 'data/v1'
-bg_color = '#292B2C'
+bg_color = '#263238'
 font_color = '#FFFFFF'
 font_size = 15
 height = 500
@@ -46,7 +46,7 @@ def ontology_hierarchy():
 
 def all_instances_count_plot(all_instances_data):
     all_instances_figure = go.Figure(go.Bar(x=all_instances_data['instancecount'], y=all_instances_data['class'],
-                                            orientation='h'))
+                                            orientation='h', marker_color='#EEEEEE'))
 
     all_instances_figure.update_layout(height=height, margin=spacing, plot_bgcolor=bg_color, paper_bgcolor=bg_color, font_size=font_size,
                                        font_color=font_color, yaxis=dict(showgrid=False))

@@ -1,6 +1,8 @@
 import dash_core_components as dcc
 import dash_html_components as html
+
 import src.Visualize as VI
+
 
 def initialize_home_page(general_statistics, ontology_figures):
     home_page = html.Div([
@@ -10,86 +12,96 @@ def initialize_home_page(general_statistics, ontology_figures):
             html.Div([
                 html.Div([
                     html.Div([
-                        html.Label('Total Triples', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        html.Label('Total Triples', style={'color': '#000000', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='total-triples-label',
                                        children=general_statistics['TOTAL_TRIPLES'],
-                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                       style={'font-size': '30px', 'color': '#000000', 'margin': 0,
                                               'line-height': '120%'})
                         ])
                     ], className='card-body', style={'padding': 15})
-                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
-                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
-                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+                ], className='card text-center', style={'background-color': '#EEEEEE', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
             ], className='col'),
             html.Div([
                 html.Div([
                     html.Div([
-                        html.Label('Total Classes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        html.Label('Total Classes', style={'color': '#000000', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='total-classes-label',
                                        children=general_statistics['TOTAL_CLASSES'],
-                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                       style={'font-size': '30px', 'color': '#000000', 'margin': 0,
                                               'line-height': '120%'})
                         ])
                     ], className='card-body', style={'padding': 15})
-                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
-                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
-                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+                ], className='card text-center', style={'background-color': '#EEEEEE', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
             ], className='col'),
             html.Div([
                 html.Div([
                     html.Div([
-                        html.Label('Total Properties', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        html.Label('Total Properties', style={'color': '#000000', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='total-properties-label',
                                        children=general_statistics['TOTAL_PROPERTIES'],
-                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                       style={'font-size': '30px', 'color': '#000000', 'margin': 0,
                                               'line-height': '120%'})
                         ])
                     ], className='card-body', style={'padding': 15})
-                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
-                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
-                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+                ], className='card text-center', style={'background-color': '#EEEEEE', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
             ], className='col')
         ], className='row', style={'margin': 20}),
 
         # plots
-        html.Div(children=[
-            html.Div(children=[
-
-                # ontologies
+        html.Div([
+            html.Div([
                 html.Div(children=[
                     html.Div(children=[
-                        html.Button('Ontologies 🛈', id='btn_ontologies', n_clicks=0,
-                                    className='btn btn-dark btn-lg btn-block',
-                                    title='Click to Change Ontologies Hierarchy Plot')
-                    ], className='col m-0 p-0'),
-                    dcc.Loading(type='cube', className='h-100 align-items-center', children=[
-                        html.Div(id='ontology_container', children=[
-                            html.Div(children=[
-                                dcc.Graph(id='ontology', figure=ontology_figures[1])
-                            ])
-                        ], className='card w-100 bg-dark')
-                    ])
-                ], className='col', style={'min-width': '500px'}),
 
-                # instances count
-                html.Div(children=[
-                    html.Div([
-                        html.Button('Instances Count', id='btn_instancescount', n_clicks=0,
-                                    className='btn btn-dark btn-lg btn-block', disabled=True)
-                    ], className='col m-0 p-0'),
-                    html.Div([
-                        dcc.Loading(type='cube',
-                                    className='h-100 align-items-center',
-                                    children=[
-                                        html.Div(id='parent_instances')
-                                    ])
-                    ]),
-                ], className='col', style={'min-width': '500px'}),
-            ], className='row w-100 m-0 p-0')
-        ], style={'margin': 20}),
+                        # ontologies
+                        html.Div(children=[
+                            html.Div(children=[
+                                html.Button('Ontologies 🛈', id='btn_ontologies', n_clicks=0,
+                                            className='btn btn-lg btn-block',
+                                            title='Click to Change Ontologies Hierarchy Plot',
+                                            style={'background-color': '#EEEEEE'})
+                            ], className='col m-0 p-0'),
+                            html.Div([
+                                dcc.Loading(type='cube',
+                                            className='h-100 align-items-center',
+                                            children=[
+                                                html.Div(id='ontology_container', children=[
+                                                    dcc.Graph(id='ontology', figure=ontology_figures[1])
+                                                ])
+                                            ])
+                            ])
+                        ], className='col p-0', style={'min-width': '500px'}),
+
+                        # instances count
+                        html.Div(children=[
+                            html.Div([
+                                html.Button('Instances Count', id='btn_instancescount', n_clicks=0,
+                                            className='btn btn-lg btn-block', disabled=True,
+                                            style={'background-color': '#EEEEEE'})
+                            ], className='col m-0 p-0'),
+                            html.Div([
+                                dcc.Loading(type='cube',
+                                            className='h-100 align-items-center',
+                                            children=[
+                                                html.Div(id='parent_instances')
+                                            ])
+                            ]),
+                        ], className='col p-0', style={'min-width': '500px'}),
+                    ], className='row w-100 m-0 p-4', style={'background-color': '#263238', 'border-radius': '5px',
+                                                             'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                                           '0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
+                ]),
+            ], className='card-body p-0')
+        ], className='card', style={'margin': 30}),
 
         # SPORTAL Statistics 2
         html.Div([
@@ -113,17 +125,17 @@ def initialize_home_page(general_statistics, ontology_figures):
             html.Div([
                 html.Div([
                     html.Div([
-                        html.Label('Blank Subject Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        html.Label('Blank Subject Nodes', style={'color': '#000000', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='blank-subjects-label',
                                        children=general_statistics['BLANK_SUBJECTS'],
-                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                       style={'font-size': '30px', 'color': '#000000', 'margin': 0,
                                               'line-height': '120%'})
                         ])
                     ], className='card-body', style={'padding': 15})
-                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
-                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
-                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+                ], className='card text-center', style={'background-color': '#EEEEEE', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
             ], className='col'),
 
             # objects
@@ -145,23 +157,27 @@ def initialize_home_page(general_statistics, ontology_figures):
             html.Div([
                 html.Div([
                     html.Div([
-                        html.Label('Blank Object Nodes', style={'color': '#FFFFFF', 'margin': 0, 'padding': 0}),
+                        html.Label('Blank Object Nodes', style={'color': '#000000', 'margin': 0, 'padding': 0}),
                         dcc.Loading(type='dot', children=[
                             html.Label(id='blank-objects-label',
                                        children=general_statistics['BLANK_OBJECTS'],
-                                       style={'font-size': '30px', 'color': '#FFFFFF', 'margin': 0,
+                                       style={'font-size': '30px', 'color': '#000000', 'margin': 0,
                                               'line-height': '120%'})
                         ])
                     ], className='card-body', style={'padding': 15})
-                ], className='card text-center', style={'background-color': '#263238', 'border-radius': '5px',
-                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48),'
-                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.48)'})
+                ], className='card text-center', style={'background-color': '#EEEEEE', 'border-radius': '5px',
+                                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
             ], className='col'),
         ], className='row', style={'margin': 20}),
 
         html.Div([
-            dcc.Graph(id='triples', figure=VI.triples())
-        ], className='w-100'),
+            html.Div([
+                dcc.Graph(id='triples', figure=VI.triples())
+            ], className='card-body p-0')
+        ], className='card p-3', style={'margin': 30, 'background-color': '#263238', 'border-radius': '5px',
+                                    'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                  '0 6px 20px 0 rgba(0, 0, 0, 0.20)'}),
 
         # SPARQL Editor
         html.Div([
@@ -198,12 +214,12 @@ def initialize_home_page(general_statistics, ontology_figures):
                     ], className='col'),
                     html.Div([
                         html.Button('Run Query', id='run-query-button', className='btn',
-                                    style={'width': '100%', 'height': '100%', 'background-color': '#e8aa24',
+                                    style={'width': '100%', 'height': '100%', 'background-color': '#37474F',
                                            'color': '#FFFFFF'})
                     ], className='col'),
                     html.Div([
                         html.Button('Download', id='download-button', className='btn', disabled=True,
-                                    style={'width': '100%', 'height': '100%', 'background-color': '#e8aa24',
+                                    style={'width': '100%', 'height': '100%', 'background-color': '#37474F',
                                            'color': '#FFFFFF'})
                     ], className='col'),
                 ], className='row w-100 m-0 p-0'),
@@ -212,8 +228,8 @@ def initialize_home_page(general_statistics, ontology_figures):
                     html.Div(id='response-datatable-div', className='col', style={'margin': 20})
                 ], className='row w-100 m-0 p-0')
             ], className='card-body')
-        ], className='card', style={'background-color': '#394247', 'margin': 20, 'border-radius': '10px',
-                                    'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.48), 0 6px 20px 0 rgba(0, 0, 0, 0.48)'}),
+        ], className='card', style={'background-color': '#E0E0E0', 'margin': 20, 'border-radius': '10px',
+                                    'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.20)'}),
 
     ])
 
