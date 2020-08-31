@@ -54,6 +54,18 @@ The bottom most section of the dashboard is of SPARQL query editor where users c
 
 ![instances count](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/table.png)
 
+## Exploring and Working with the Dashboard:
+
+![ontologies_document_1](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_1.png)
+***
+![ontologies_document_2](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_2.png)
+***
+![ontologies_document_3](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_3.png)
+***
+![ontologies_document_4](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_4.png)
+***
+![ontologies_document_5](https://raw.githubusercontent.com/dbpedia/gsoc-2020-dashboard/master/wiki/ontologies_5.png)
+
 ## Development Life Cycle:
 Tools and Frameworks used for developing this system:
 1) [Flask](https://flask.palletsprojects.com/en/1.1.x/) framework (for backend operations and handling requests)
