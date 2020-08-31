@@ -37,7 +37,6 @@ def work_classes_bar(plot_data_subclasses, class_name):
 
 
 def triples(triples_count):
-    print(triples_count)
     triples_figure = go.Figure(
         go.Scatter(x=triples_count['version'],
                    y=triples_count['triplescount'],

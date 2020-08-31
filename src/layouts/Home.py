@@ -7,6 +7,18 @@ import src.Visualize as VI
 def initialize_home_page(general_statistics, ontology_figures, triples_count):
     home_page = html.Div([
 
+        html.Div([
+            html.Div([
+                html.Div([
+                    html.Div([
+                        html.Span('Dashboard Status ', id='dashboard-status-label', className='m-0 p-0'),
+                        html.Span('Connected', id='dashboard-status', className='m-0 badge badge-pill badge-success')
+                    ], className='col'),
+                ], className='row w100'),
+            ], className='card-body')
+        ], className='card p-0', style={'background-color': '#E0E0E0', 'margin': 20, 'border-radius': '5px',
+                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.20)'}),
+
         # SPORTAL Statistics 1
         html.Div([
             html.Div([
