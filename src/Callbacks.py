@@ -38,10 +38,17 @@ def initialize_callbacks(dashApp):
     def update_parent_instances_bar(data):
         selected_class = 'owlThing'
         if data is not None:
-            selected_class = data['points'][0]['label']
+            if data['points'][0]['label'] == data['points'][0]['entry']:
+                selected_class = data['points'][0]['parent']
+            else:
+                selected_class = data['points'][0]['label']
         selected_ontology_data_labels = ontology_data[ontology_data['parents'] == selected_class]['labels']
+        if selected_ontology_data_labels.empty:
+            selected_ontology_data_labels = ontology_data[ontology_data['labels'] == selected_class]['labels']
         selected_all_instances_data = all_instances_count_data[all_instances_count_data['class'].isin(selected_ontology_data_labels)]
         selected_all_instances_data = selected_all_instances_data.sort_values(by='instancecount', ascending=False)
+        if selected_all_instances_data.empty:
+            selected_all_instances_data.append({'class': selected_class, 'instancecount': 0}, ignore_index=True)
         figure = LF.all_instances_count_plot(selected_all_instances_data)
         return dcc.Graph(id='parent_instances_bar', figure=figure)
 
