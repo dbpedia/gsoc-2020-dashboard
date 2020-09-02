@@ -72,14 +72,22 @@ def initialize_home_page(general_statistics, ontology_figures, triples_count):
         html.Div([
             html.Div([
                 html.Div(children=[
+                    html.Div([
+                        html.Div([
+                            html.P('Click on class names to expand hierarchy and get instances count on bar graph',
+                                   className='mt-2 mb-0'),
+                            html.P('Click Ontologies button to Change Hierarchy Plot',
+                                   className='mt-0 mb-2')
+                        ], className='col text-center'),
+                    ], className='row w-100 m-0 p-0'),
+
                     html.Div(children=[
 
                         # ontologies
                         html.Div(children=[
                             html.Div(children=[
-                                html.Button('Ontologies 🛈', id='btn_ontologies', n_clicks=0,
+                                html.Button('Ontologies', id='btn_ontologies', n_clicks=0,
                                             className='btn btn-lg btn-block',
-                                            title='Click to Change Ontologies Hierarchy Plot',
                                             style={'background-color': '#EEEEEE'})
                             ], className='col m-0 p-0'),
                             html.Div([
@@ -108,9 +116,10 @@ def initialize_home_page(general_statistics, ontology_figures, triples_count):
                                             ])
                             ]),
                         ], className='col p-0', style={'min-width': '500px'}),
-                    ], className='row w-100 m-0 p-4', style={'background-color': '#263238', 'border-radius': '5px',
-                                                             'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
-                                                                           '0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
+
+                    ], className='row w-100 m-0 p-4',
+                        style={'background-color': '#263238', 'border-radius': '5px',
+                               'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20), 0 6px 20px 0 rgba(0, 0, 0, 0.20)'})
                 ]),
             ], className='card-body p-0')
         ], className='card', style={'margin': 30}),
@@ -188,8 +197,8 @@ def initialize_home_page(general_statistics, ontology_figures, triples_count):
                 dcc.Graph(id='triples', figure=VI.triples(triples_count))
             ], className='card-body p-0')
         ], className='card p-3', style={'margin': 30, 'background-color': '#263238', 'border-radius': '5px',
-                                    'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
-                                                  '0 6px 20px 0 rgba(0, 0, 0, 0.20)'}),
+                                        'box-shadow': '0 4px 8px 0 rgba(0, 0, 0, 0.20),'
+                                                      '0 6px 20px 0 rgba(0, 0, 0, 0.20)'}),
 
         # SPARQL Editor
         html.Div([
