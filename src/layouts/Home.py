@@ -76,7 +76,7 @@ def initialize_home_page(general_statistics, ontology_figures, triples_count):
                         html.Div([
                             html.P('Click on class names to expand hierarchy and get instances count on bar graph',
                                    className='mt-2 mb-0'),
-                            html.P('Click Ontologies button to Change Hierarchy Plot',
+                            html.P('Click Ontologies button to change hierarchy plot',
                                    className='mt-0 mb-2')
                         ], className='col text-center'),
                     ], className='row w-100 m-0 p-0'),
