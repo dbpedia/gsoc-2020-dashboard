@@ -1,4 +1,5 @@
 import dash_core_components as dcc
+import dash_html_components as html
 import dash_table
 import pandas as pd
 from dash.dependencies import Output, Input
@@ -38,7 +39,7 @@ def initialize_callbacks(dashApp):
     def update_parent_instances_bar(data):
         selected_class = 'owlThing'
         if data is not None:
-            if data['points'][0]['label'] == data['points'][0]['entry']:
+            if 'entry' not in data['points'][0].keys() or data['points'][0]['label'] == data['points'][0]['entry']:
                 selected_class = data['points'][0]['parent']
             else:
                 selected_class = data['points'][0]['label']
@@ -49,6 +50,8 @@ def initialize_callbacks(dashApp):
         selected_all_instances_data = selected_all_instances_data.sort_values(by='instancecount', ascending=False)
         if selected_all_instances_data.empty:
             selected_all_instances_data.append({'class': selected_class, 'instancecount': 0}, ignore_index=True)
+            return html.Div('No Instances Count Found For Selected Class',
+                            className='w-100 h-100 text-center text-white p-5')
         figure = LF.all_instances_count_plot(selected_all_instances_data)
         return dcc.Graph(id='parent_instances_bar', figure=figure)
 
