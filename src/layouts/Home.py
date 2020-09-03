@@ -11,8 +11,9 @@ def initialize_home_page(general_statistics, ontology_figures, triples_count):
             html.Div([
                 html.Div([
                     html.Div([
-                        html.Span('Dashboard Status ', id='dashboard-status-label', className='m-0 p-0'),
-                        html.Span('Connected', id='dashboard-status', className='m-0 badge badge-pill badge-success')
+                        html.Span('Endpoint Status ', id='dashboard-status-label', className='m-0 p-0'),
+                        html.Span('connected', id='dashboard-status', className='m-0 badge badge-pill badge-success'),
+                        dcc.Interval(id='dashboard-status-interval', interval=5000, n_intervals=0)
                     ], className='col'),
                 ], className='row w100'),
             ], className='card-body')

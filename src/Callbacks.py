@@ -2,6 +2,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_table
 import pandas as pd
+import requests
 from dash.dependencies import Output, Input
 
 import src.LayoutFigures as LF
@@ -14,6 +15,25 @@ def initialize_callbacks(dashApp):
     all_instances_count_data, all_instances_count_figure = LF.all_instances_count()
     general_statistics = LF.get_general_statistics()
     triples_count = pd.read_csv('data/v1/TriplesCount.csv')
+
+    @dashApp.callback(
+        [Output('dashboard-status', 'children'),
+         Output('dashboard-status', 'className')],
+        [Input('dashboard-status-interval', 'n_intervals')]
+    )
+    def update_status(n_intervals):
+        response = requests.post('http://127.0.0.1:5000/connectionstatus',
+                                 json={
+                                     'dbpediadashboard_image': 'karankharecha/dbpediadashboard:latest',
+                                     'dbpediadashboard_container': 'dbdash'
+                                 })
+        response = response.json()
+        if response['status'] == 'connected':
+            return response['status'], 'm-0 badge badge-pill badge-success'
+        elif response['status'] == 'disconnected':
+            return response['status'], 'm-0 badge badge-pill badge-warning'
+        else:
+            return response['status'], 'm-0 badge badge-pill badge-danger'
 
     @dashApp.callback(
         Output('container', 'children'),
