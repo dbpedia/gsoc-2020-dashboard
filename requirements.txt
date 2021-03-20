@@ -12,7 +12,7 @@ future==0.18.2
 iniconfig==1.0.1
 isodate==0.6.0
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 more-itertools==8.4.0
 numpy==1.19.1
